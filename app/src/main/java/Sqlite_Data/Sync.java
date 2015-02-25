@@ -40,7 +40,7 @@ public class Sync {
         try
         {
             try {
-                transporte.call("urn:EZSoap#getDeliverEdits", envelope);
+                transporte.call("urn:EZSoap/getDeliverEdits", envelope);
                 // Assigning the response of the server to a soap object
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
                 try {

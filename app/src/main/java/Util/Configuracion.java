@@ -7,7 +7,7 @@ public class Configuracion {
 
 
     public static String UrlWSDL = "http://bif2.com/lib/EZSoap.php?wsdl";
-    public static String WS_NAMESPACE = "urn:EZSoap";
+    public static String WS_NAMESPACE = "EZSoap";
 
 
 }
