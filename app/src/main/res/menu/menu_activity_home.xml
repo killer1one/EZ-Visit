@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="visit.ez.wyse.ezvisit.ActivityHome">
+
+    <item android:id="@+id/action_entrega_muestra"
+        android:title="Entrega de Muestra"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+
+    <item android:id="@+id/action_operativos"
+        android:title="Operativos"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+
+    <item android:id="@+id/action_gastos"
+        android:title="Gastos"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_Asignacion_ruta"
+        android:title="Asignacion de Ruta"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_presupuesto"
+        android:title="Presupuestos"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_Consulta_Transaciones"
+        android:title="Consulta Transaciones"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>

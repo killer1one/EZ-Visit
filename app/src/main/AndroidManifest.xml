@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="visit.ez.wyse.ezvisit" >
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,6 +20,38 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityHome"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Entrega_Muestra"
+            android:label="@string/title_activity_entrega__muestra" >
+        </activity>
+        <activity
+            android:name=".Operativo_Medico"
+            android:label="@string/title_activity_operativo__medico" >
+        </activity>
+        <activity
+            android:name=".Consulta_Transaciones"
+            android:label="@string/title_activity_consulta__transaciones" >
+        </activity>
+        <activity
+            android:name=".Asignacion_Ruta"
+            android:label="@string/title_activity_asignacion__ruta" >
+        </activity>
+        <activity
+            android:name=".Presupuesto"
+            android:label="@string/title_activity_presupuesto" >
+        </activity>
+        <activity
+            android:name=".productos"
+            android:label="@string/title_activity_productos" >
+        </activity>
+        <activity
+            android:name=".Registro_Gastos"
+            android:label="@string/title_activity_registro__gastos" >
         </activity>
     </application>
 

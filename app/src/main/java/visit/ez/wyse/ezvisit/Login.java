@@ -1,10 +1,12 @@
 package visit.ez.wyse.ezvisit;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import Sqlite_Data.Sync;
 
@@ -19,8 +21,14 @@ public class Login extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        new mySoapCall().execute("","");
 
+       // new mySoapCall().execute("","");
+
+    }
+
+    public void IniciarSesion(View v){
+        Intent launch = new Intent(this, ActivityHome.class);
+        startActivity(launch);
     }
 
 
@@ -55,7 +63,7 @@ public class Login extends ActionBarActivity {
             int resulto = 0;
 
             Sync prueba = new Sync();
-            prueba.getDeliverEdits(User, Pass, 1);
+            //prueba.getDeliverEdits(User, Pass, 1);
 
             return resulto;
         }

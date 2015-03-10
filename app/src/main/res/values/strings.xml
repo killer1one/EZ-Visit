@@ -4,5 +4,13 @@
     <string name="app_name">EZVisit</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_activity_home">ActivityHome</string>
+    <string name="title_activity_entrega__muestra">Entrega_Muestra</string>
+    <string name="title_activity_operativo__medico">Operativo_Medico</string>
+    <string name="title_activity_consulta__transaciones">Consulta_Transaciones</string>
+    <string name="title_activity_asignacion__ruta">Asignacion_Ruta</string>
+    <string name="title_activity_presupuesto">Presupuesto</string>
+    <string name="title_activity_productos">productos</string>
+    <string name="title_activity_registro__gastos">Registro_Gastos</string>
 
 </resources>
