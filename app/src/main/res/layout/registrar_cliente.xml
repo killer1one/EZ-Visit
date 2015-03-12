@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:id="@+id/spinTipo"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_nombrecliente"
+        android:id="@+id/textView18" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editNombre"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_apellidocliente"
+        android:id="@+id/textView19" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editApellido" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_anadirdir"
+            android:id="@+id/bDirecciones"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_anadircontacto"
+            android:id="@+id/bContacto"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:id="@+id/spinEspec"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:id="@+id/spinClasificacion"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutSave"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_cancelar"
+            android:id="@+id/bCancelar"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_guardar"
+            android:id="@+id/bGuardar"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

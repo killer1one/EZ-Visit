@@ -14,4 +14,37 @@
     <string name="title_activity_registro__gastos">Registro_Gastos</string>
     <string name="title_activity_carga__datos">Carga_Datos</string>
 
+    <string name="txt_nombrecliente">Nombre del Cliente</string>
+    <string name="txt_apellidocliente">Apellido del Cliente</string>
+    <string name="txt_tipoCliente">Tipo de Cliente</string>
+    <string name="txt_cliente">Cliente</string>
+    <string name="txt_anadirdir">Añadir direcciones</string>
+    <string name="txt_anadircontacto">Añadir Contacto</string>
+
+    <string name="txt_guardar">Guardar</string>
+    <string name="txt_cancelar">Cancelar</string>
+
+    <string name="txt_direcciones">Direcciones</string>
+    <string name="txt_tipoDir">Tipo de Dirección</string>
+    <string name="txt_direccion">Dirección</string>
+
+    <string name="txt_contactos">Contactos</string>
+    <string name="txt_tipoContacto">Tipo de Contacto</string>
+    <string name="txt_contacto">Contacto</string>
+    <string name="txt_tel">Teléfono</string>
+    <string name="txt_mail">Correo</string>
+
+    <string name="txt_programada">Visita Programada</string>
+    <string name="txt_tipoVisita">Tipo de Visita</string>
+    <string name="txt_estadoVisita">Estado de Visita</string>
+
+    <string name="txt_entregamuestras">Entrega de Muestras</string>
+    <string name="txt_objetivoprox">Objetivo Próxima Visita</string>
+    <string name="txt_comentarios">Comentarios</string>
+
+    <string name="txt_planTrabajo">Plan de Trabajo</string>
+
+
+
+
 </resources>
