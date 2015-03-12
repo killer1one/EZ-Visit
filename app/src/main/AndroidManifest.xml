@@ -53,6 +53,10 @@
             android:name=".Registro_Gastos"
             android:label="@string/title_activity_registro__gastos" >
         </activity>
+        <activity
+            android:name=".Carga_Datos"
+            android:label="@string/title_activity_carga__datos" >
+        </activity>
     </application>
 
 </manifest>

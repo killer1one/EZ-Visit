@@ -12,5 +12,6 @@
     <string name="title_activity_presupuesto">Presupuesto</string>
     <string name="title_activity_productos">productos</string>
     <string name="title_activity_registro__gastos">Registro_Gastos</string>
+    <string name="title_activity_carga__datos">Carga_Datos</string>
 
 </resources>

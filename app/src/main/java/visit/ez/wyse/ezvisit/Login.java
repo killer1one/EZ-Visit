@@ -1,5 +1,7 @@
 package visit.ez.wyse.ezvisit;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import Sqlite_Data.Sync;
 
@@ -44,13 +47,18 @@ public class Login extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+            case R.id.action_Carga_Datos:
+                SetDialogCargaDatos();
+                return true;
+            case R.id.action_Configuracion:
+                return true;
+            case R.id.action_About:
+                return true;
+
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -81,6 +89,35 @@ public class Login extends ActionBarActivity {
         // After the execution
         protected void onPostExecute(Integer result) {
         }
+    }
+
+
+
+
+    public void SetDialogCargaDatos()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
+
+        alert.setTitle("Carga de Datos");
+        alert.setMessage("Ez-Visit Proceso de Carga Inicial proceda con los pasos para continuar");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(Login.this);
+        input.setHint("Contrasenña");
+        alert.setView(input);
+
+        alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+        alert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+        alert.show();
     }
 
 }
