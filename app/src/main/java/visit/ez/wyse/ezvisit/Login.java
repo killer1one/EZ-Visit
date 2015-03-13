@@ -1,6 +1,7 @@
 package visit.ez.wyse.ezvisit;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
+import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
 
 
@@ -18,19 +22,35 @@ public class Login extends ActionBarActivity {
 
     String User = "User1";
     String Pass = "Password1";
+    String Contrasenña = "prueba";
+    public Sqlite myConn;
+    public Context _cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        _cont = this;
+        myConn = new Sqlite(_cont, null, 1);
 
        // new mySoapCall().execute("","");
 
     }
 
     public void IniciarSesion(View v){
-        Intent launch = new Intent(this, ActivityHome.class);
+        ArrayList<String> Employee = new ArrayList<String>();
+        if (Employee != null) {
+
+            Intent launch = new Intent(this, ActivityHome.class);
+            startActivity(launch);
+        } else {
+
+        }
+
+    }
+
+    public void IniciarCargaDatos(){
+        Intent launch = new Intent(this, Carga_Datos.class);
         startActivity(launch);
     }
 
@@ -113,7 +133,35 @@ public class Login extends ActionBarActivity {
         });
         alert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
+
+                if (Contrasenña.equalsIgnoreCase(input.getText().toString())) {
+                    IniciarCargaDatos();
+                } else {
+                    AlertContrasenñaBad();
+                }
+
+            }
+        });
+
+        alert.show();
+    }
+
+
+    public void AlertContrasenñaBad(){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
+
+        alert.setTitle("Error");
+        alert.setMessage("La Contraseña de Ez-Visit que dígito esta incorrecta Intenta de Nuevo");
+        alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        alert.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                SetDialogCargaDatos();
             }
         });
 

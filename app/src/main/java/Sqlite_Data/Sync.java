@@ -11,12 +11,20 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 import Util.Configuracion;
+import visit.ez.wyse.ezvisit.Carga_Datos;
 
 /**
  * Created by Ec_Colon on 23/2/15.
  */
 public class Sync {
 
+
+    private Carga_Datos _activityCargaDatos;
+
+    public void setActivityCargaDatos(Carga_Datos activityCargaDatos)
+    {
+        _activityCargaDatos = activityCargaDatos;
+    }
 
     public void getDeliverEdits (String user, String pass, int ciclo, Context _Cont){
 
@@ -102,13 +110,20 @@ public class Sync {
                 //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
                 try {
-
+                    SQL_Zonas myLisKPI = new SQL_Zonas(_Cont);
+                    Data_Zonas Data = new Data_Zonas();
 
                     for (int i = 0; i < resSoap.getPropertyCount(); i++)
                     {
 
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+
+                        Data.Descripcion = ic.getProperty(0).toString().trim();
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.ZonaID = Integer.valueOf(ic.getProperty(2).toString().trim());
+
+                        myLisKPI.saveRecord(Data);
                     }
 
                 }catch (Exception e){
@@ -354,8 +369,8 @@ public class Sync {
                 //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
 
-                //SQL_PTTipos myHisfKPI = new SQL_HistorialDes(_Cont);
-                //Data_PTTipos Data = new Data_HistorialDes();
+                SQL_PTTipos myHisfKPI = new SQL_PTTipos(_Cont);
+                Data_PTTipos Data = new Data_PTTipos();
 
                 try {
 
@@ -365,6 +380,12 @@ public class Sync {
 
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+
+                        Data.Descripcion = ic.getProperty(0).toString().trim();
+                        Data.PTTipo = Integer.valueOf(ic.getProperty(1).toString().trim());
+
+                        myHisfKPI.saveRecord(Data);
+
                     }
 
                 }catch (Exception e){
@@ -494,8 +515,9 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.Descripcion = "";
-                        Data.EmployeeTipo = 0;
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
+                        Data.EmployeeTipo = Integer.valueOf(ic.getProperty(0).toString().trim());
+
 
                         myEmpl.saveRecord(Data);
 
@@ -557,12 +579,12 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.EmpApellido = "";
-                        Data.EmployeeCode = "";
-                        Data.EmployeeID = 0;
-                        Data.EmployeeTipo = 0;
-                        Data.EmpNombre = "";
-                        Data.MasterID = 0;
+                        Data.EmpApellido = ic.getProperty(0).toString().trim();
+                        Data.EmployeeCode = ic.getProperty(1).toString().trim();
+                        Data.EmployeeID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.EmployeeTipo = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.EmpNombre = ic.getProperty(4).toString().trim();
+                        Data.MasterID = Integer.valueOf(ic.getProperty(5).toString().trim());
 
                         myEmpl.saveRecord(Data);
                     }
@@ -624,10 +646,12 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.ClientID = 0;
-                        Data.EmployeeID = 0;
-                        Data.MasterID = 0;
-                        Data.RegID = 0;
+                        Data.ClientID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.EmployeeID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.RegID = Integer.valueOf(ic.getProperty(3).toString().trim());
+
+
 
                         myclienAsi.saveRecord(Data);
                     }
@@ -751,13 +775,13 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.ClientAddressID = 0;
-                        Data.ClientDireccion = "";
-                        Data.ClientID = 0;
-                        Data.ClientLatitud = "";
-                        Data.ClientLongitud = "";
-                        Data.MasterID = 0;
-                        Data.TipoAddress = 0;
+                        Data.ClientAddressID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.ClientDireccion = ic.getProperty(1).toString().trim();
+                        Data.ClientID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.ClientLatitud = ic.getProperty(1).toString().trim();
+                        Data.ClientLongitud = ic.getProperty(1).toString().trim();
+                        Data.MasterID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.TipoAddress = Integer.valueOf(ic.getProperty(0).toString().trim());
 
                         myClienAdre.saveRecord(Data);
                     }
@@ -819,8 +843,10 @@ public class Sync {
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
 
-                        Data.Descripcion = "";
-                        Data.TipoContacto = 0;
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
+                        Data.TipoContacto = Integer.valueOf(ic.getProperty(0).toString().trim());
+
+
 
                         myCon.saveRecord(Data);
                     }
@@ -881,12 +907,12 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.ClientContactID = 0;
-                        Data.ClientCorreo = "";
-                        Data.ClientID = 0;
-                        Data.MasterID = 0;
-                        Data.NumeroTel = "";
-                        Data.TipoContacto = 0;
+                        Data.ClientContactID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.ClientCorreo = ic.getProperty(1).toString().trim();
+                        Data.ClientID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.NumeroTel = ic.getProperty(4).toString().trim();
+                        Data.TipoContacto = Integer.valueOf(ic.getProperty(5).toString().trim());
 
 
                         myCon.saveRecord(Data);
@@ -950,8 +976,10 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.ClientTipo = 0;
-                        Data.Descripcion = "";
+                        Data.ClientTipo = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
+
+
 
                         myCon.saveRecord(Data);
                     }
@@ -1065,15 +1093,16 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.Clasificacion = "";
-                        Data.ClientAddressID = 0;
-                        Data.ClientApellido = "";
-                        Data.ClientCode = "";
-                        Data.ClientContactID = 0;
-                        Data.ClientID = 0;
-                        Data.ClientNombre = "";
-                        Data.ClientTipo = 0;
-                        Data.MasterID = 0;
+                        Data.Clasificacion = ic.getProperty(0).toString().trim();
+                        Data.ClientAddressID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.ClientApellido = ic.getProperty(2).toString().trim();
+                        Data.ClientCode = ic.getProperty(3).toString().trim();
+                        Data.ClientContactID = Integer.valueOf(ic.getProperty(4).toString().trim());
+                        Data.ClientID = Integer.valueOf(ic.getProperty(5).toString().trim());
+                        Data.ClientNombre = ic.getProperty(6).toString().trim();
+                        Data.ClientTipo = Integer.valueOf(ic.getProperty(7).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(8).toString().trim());
+
 
                         myCon.saveRecord(Data);
 
@@ -1201,7 +1230,7 @@ public class Sync {
 
 
 
-    public void getIntegrityFull (String user, String pass, int ciclo, Context _Cont){
+    public void getIntegrityFull (String user, String pass, String Tabla, Context _Cont){
 
         // Making the soap request object with its parameters
         SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getIntegrityFull");
@@ -1209,7 +1238,7 @@ public class Sync {
         // Creating all the properties required by the service
         request.addProperty("user", user);
         request.addProperty("pass", pass);
-        request.addProperty("ciclo", ciclo);
+        request.addProperty("Tabla", Tabla);
 
         // Creating the envelope of the soap request
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);

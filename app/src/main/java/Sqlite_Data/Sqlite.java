@@ -14,7 +14,8 @@ public class Sqlite extends SQLiteOpenHelper{
 	private static File BASE_PATH = Environment.getDataDirectory();
 	public static final String DATA_DIRNAME = "EZ-VISIT";
 	public static final String DATABASE_PATH = Environment.getDataDirectory().getAbsolutePath() + File.separator + DATA_DIRNAME + File.separator + DATABASE_NAME;
-	public static final int DATABASE_VERSION = 1;
+    //public static final String DATABASE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + DATA_DIRNAME + File.separator + DATABASE_NAME;
+    public static final int DATABASE_VERSION = 1;
 
 	// Table List
 	public static final String TABLE_UserMaster = "UserMaster";
