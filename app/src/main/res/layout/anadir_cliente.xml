@@ -7,19 +7,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txt_planTrabajo"
-        android:id="@+id/textView33" />
+        android:text="@string/txt_buscarCliente"
+        android:id="@+id/textView34" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editBuscar" />
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="495dp"
-        android:id="@+id/listVisitas"
+        android:layout_height="wrap_content"
+        android:id="@+id/listClientes"
+        android:layout_gravity="center_horizontal"
         android:choiceMode="singleChoice" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_anadirVisita"
-        android:onClick="GoNuevaVisita"
-        android:id="@+id/bCrear" />
 </LinearLayout>

@@ -18,6 +18,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="AddContacto"
         android:text="/\"
         android:id="@+id/bAdd" />
 
@@ -31,7 +32,7 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinTipo"
+        android:id="@+id/spinTipoContacto"
         android:spinnerMode="dropdown" />
 
     <TextView
@@ -73,6 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_cancelar"
+            android:onClick="CancelarContacto"
             android:id="@+id/bCancelar"
             android:layout_weight="1" />
 
@@ -80,6 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_guardar"
+            android:onClick="SalvarContacto"
             android:id="@+id/bGuardar"
             android:layout_weight="1" />
     </LinearLayout>
