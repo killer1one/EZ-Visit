@@ -576,7 +576,6 @@ public class Sync {
                     for (int i = 0; i < resSoap.getPropertyCount(); i++)
                     {
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
                         Data.EmpApellido = ic.getProperty(0).toString().trim();

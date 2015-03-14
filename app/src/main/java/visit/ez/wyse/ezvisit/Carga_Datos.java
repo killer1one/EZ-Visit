@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import Sqlite_Data.SQL_Employee;
 import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
-import Util.ConnectionDetector;
 
 
 public class Carga_Datos extends Activity {
@@ -30,16 +29,13 @@ public class Carga_Datos extends Activity {
     public EditText Usuario,Password;
     public int screenOrient;
     private Sqlite myConn;
-
-    // flag for Internet connection status
-    Boolean isInternetPresent = false;
-    // Connection detector class
-    ConnectionDetector cd;
     boolean endSync = false;
     ProgressDialog dialogProcess;
     public Context _cont;
     public SQLiteDatabase db;
-
+    public float myProcesosBarra = 0;
+    public float mySignalBarra = 0;
+    public int p = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +81,12 @@ public class Carga_Datos extends Activity {
 						 * la pantalla
 						 */
 
+                        //Variable de Progreso
+                        myProcesosBarra = 0;
+                        mySignalBarra = 0;
+                        p = 0;
+
+
                         //Eliminando Los registos
                         myConn.onUpgrade(db,1,1);
 
@@ -102,22 +104,60 @@ public class Carga_Datos extends Activity {
 
                         //Obteniendo Empleado
                         sync.getEmployee(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(1);
+
                         //Obteniendo ClienteMaestro
                         sync.getClienteMaestro(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(2);
+
                         //Obteniendo ClienteContacto
                         sync.getClienteContacto(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(3);
+
                         //Obteniendo ClienteMaestro
                         sync.getClientAddress(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(4);
+
                         //Obteniendo ClientAsignados
                         sync.getClientAsignados(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(5);
+
                         //Obteniendo ClientTipos
                         sync.getClientTipos(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(6);
+
                         //Obteniendo Zonas
                         sync.getZonas(User, Clave, 0, _cont);
 
+                        //Reportando Progreso
+                        ReportarProgreso(7);
+
                         sync.getContactoTipos(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(8);
+
                         sync.getEmployeeTipos(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(9);
+
                         sync.getPTTipos(User, Clave, 0, _cont);
+
+                        //Reportando Progreso
+                        ReportarProgreso(10);
 
 
                         endSync = true;
@@ -137,7 +177,7 @@ public class Carga_Datos extends Activity {
                             startActivity(new Intent(Carga_Datos.this,ActivityHome.class));
                             finish();
                         } else {
-
+                            AlertCargaDatoFail();
                         }
                     } catch (Exception e) {
                         dialogProcess.dismiss();
@@ -150,6 +190,25 @@ public class Carga_Datos extends Activity {
         //} else {
           //  AlertNoInternet();
         //}
+    }
+
+    public void AlertCargaDatoFail() {
+        AlertDialog.Builder a = new AlertDialog.Builder(this);
+        a.setIcon(android.R.drawable.ic_dialog_alert);
+        a.setTitle("Error");
+        a.setMessage("Error Haciendo la carga de datos por favor intente de Nuevo..");
+        a.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        a.show();
+    }
+
+
+    public void ReportarProgreso(int Cantidad){
+        myProcesosBarra = ((float)Cantidad / 10) * 100;
+        p = Math.round(myProcesosBarra);
+        dialogProcess.setProgress(p);
     }
 
 
