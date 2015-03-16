@@ -5,6 +5,14 @@ package Sqlite_Data;
  */
 public class Variable_Static {
 
+    public static String UserMobile = "CREATE TABLE [UserMobile] (\n" +
+            "[RegID] INTEGER PRIMARY KEY NOT NULL ,\n" +
+            "[MasterID] INTEGER NOT NULL ,\n" +
+            "[EmployeeID] INTEGER NOT NULL ,\n" +
+            "[MobUser] VARCHAR( 32 ) NOT NULL ,\n" +
+            "[MobPass] VARCHAR( 100 ) NOT NULL ,\n" +
+            "[MobActive] INT NOT NULL DEFAULT '1' )";
+
     public static String UserMaster = "CREATE TABLE [UserMaster] (\n" +
             "[MasterID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,\n" +
             "[MasUser] VARCHAR( 32 ) NOT NULL ,\n" +

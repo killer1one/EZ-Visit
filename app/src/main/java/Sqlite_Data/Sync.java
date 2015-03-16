@@ -18,6 +18,9 @@ import visit.ez.wyse.ezvisit.Carga_Datos;
  */
 public class Sync {
 
+    // Result Codes
+    public static int ERROR_FAILEDLOGIN = -10;
+    public static int SUCCESSFUL_LOGIN = 1;
 
     private Carga_Datos _activityCargaDatos;
 
@@ -544,8 +547,9 @@ public class Sync {
     }
 
 
-    public void getEmployee (String user, String pass, int ciclo, Context _Cont){
+    public int getEmployee (String user, String pass, int ciclo, Context _Cont){
 
+        int Success = 0;
         // Making the soap request object with its parameters
         SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getEmployee");
 
@@ -590,19 +594,29 @@ public class Sync {
                         SoapObject  ic = (SoapObject)ic_temp.getProperty(i);
 
                         //anyType{EmployeeID=-10; EmployeeCode=anyType{}; MasterID=anyType{}; SuperID=anyType{}; EmpNombre=anyType{}; EmpApellido=anyType{}; EmployeeTipo=anyType{}; ZonaID=anyType{}; }
-
                         Data.EmployeeID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.EmployeeCode = ic.getProperty(1).toString().trim();
-                        Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
-                        //SuperID
-                        Data.EmpNombre = ic.getProperty(4).toString().trim();
-                        Data.EmpApellido = ic.getProperty(5).toString().trim();
-                        Data.EmployeeTipo = Integer.valueOf(ic.getProperty(6).toString().trim());
-                        //ZonaID
 
 
-                        myEmpl.saveRecord(Data);
-                    }
+                        if(Data.EmployeeID==-10)
+                        {
+                            // Password is incorrect
+                            Success = ERROR_FAILEDLOGIN;
+                        } else
+                        {
+                            // Password is Correct so let's continuie
+                            Data.EmployeeCode = ic.getProperty(1).toString().trim();
+                            Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                            //SuperID
+                            Data.EmpNombre = ic.getProperty(4).toString().trim();
+                            Data.EmpApellido = ic.getProperty(5).toString().trim();
+                            Data.EmployeeTipo = Integer.valueOf(ic.getProperty(6).toString().trim());
+
+                            myEmpl.saveRecord(Data);
+                            Success = SUCCESSFUL_LOGIN;
+                        }
+
+                    } // The For Ends here
+
 
                 }catch (Exception e){
                     e.printStackTrace();
@@ -616,6 +630,92 @@ public class Sync {
         {
         }
 
+        return Success;
+    }
+
+    public int getUserMobile (String user, String pass, int ciclo, Context _Cont){
+
+        int Success = 0;
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getUserMobile");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getUserMobile", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_UserMobile myUser = new  SQL_UserMobile(_Cont);
+                Data_UserMobile Data = new Data_UserMobile();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                //SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
+                // Getting all sub-elements of responseMsg
+                SoapObject ic_temp = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < ic_temp.getPropertyCount(); i++)
+                    {
+
+                        SoapObject  ic = (SoapObject)ic_temp.getProperty(i);
+
+                        //anyType{EmployeeID=-10; EmployeeCode=anyType{}; MasterID=anyType{}; SuperID=anyType{}; EmpNombre=anyType{}; EmpApellido=anyType{}; EmployeeTipo=anyType{}; ZonaID=anyType{}; }
+                        Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
+
+
+                        if(Data.RegID==-10)
+                        {
+                            // Password is incorrect
+                            Success = ERROR_FAILEDLOGIN;
+                        } else
+                        {
+                            // Password is Correct so let's continuie
+                            Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                            Data.EmployeeID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                            Data.MobUser = ic.getProperty(3).toString().trim();
+                            Data.MobPass = ic.getProperty(4).toString().trim();
+                            Data.MobActive = Integer.valueOf(ic.getProperty(5).toString().trim());
+
+                            myUser.saveRecord(Data);
+                            Success = SUCCESSFUL_LOGIN;
+                        }
+
+                    } // The For Ends here
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+        return Success;
     }
 
 

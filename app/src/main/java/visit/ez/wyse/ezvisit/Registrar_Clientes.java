@@ -54,19 +54,17 @@ public class Registrar_Clientes extends ActionBarActivity {
         CLiDir = new SQL_ClientAddress(_Con);
         CLiCon = new SQL_ClienteContacto(_Con);
 
-
         // Stuff
-         spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
+        spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
         spTipoCliente.setAdapter(CliTipo.ListaClienteTipo(_Con));
 
-
-         spClasificacion = (Spinner)findViewById(R.id.spinClasificacion);
+        spClasificacion = (Spinner)findViewById(R.id.spinClasificacion);
         spClasificacion.setAdapter(CliTipo.ListaClasificacion(_Con));
 
         Spinner spEspec = (Spinner)findViewById(R.id.spinEspec);
 
-         editNombre = (EditText)findViewById(R.id.editNombre);
-         editApellido = (EditText)findViewById(R.id.editApellido);
+        editNombre = (EditText)findViewById(R.id.editNombre);
+        editApellido = (EditText)findViewById(R.id.editApellido);
 
 
     }
@@ -156,8 +154,6 @@ public class Registrar_Clientes extends ActionBarActivity {
 
             } // if ends here
 
-
-
             DirTemp.getAllData(this);
 
             Cursor TempListDir = DirTemp.getCursor();
@@ -174,7 +170,6 @@ public class Registrar_Clientes extends ActionBarActivity {
 
                     CLiDir.saveRecord(DetalleAdres);
 
-
                 } while(TempListDir.moveToNext());
 
             } // if ends here
@@ -182,8 +177,6 @@ public class Registrar_Clientes extends ActionBarActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 
         AlertSave();
 

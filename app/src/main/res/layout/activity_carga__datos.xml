@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/EditContrasena"
         android:layout_marginTop="66dp"
+        android:inputType="textPassword"
         android:layout_below="@+id/EditUsuario"
         android:layout_alignRight="@+id/EditUsuario"
         android:layout_alignEnd="@+id/EditUsuario"

@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
+import Sqlite_Data.SQL_Employee;
+import Sqlite_Data.SQL_UserMobile;
 import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
 
@@ -40,15 +44,34 @@ public class Login extends ActionBarActivity {
     }
 
     public void IniciarSesion(View v){
-  /*      ArrayList<String> Employee = new ArrayList<String>();
+    /*    ArrayList<String> Employee = new ArrayList<String>();
         Employee = SQL_Employee.getEmployee(Usuario.getText().toString(), Password.getText().toString(), myConn);
         if (Employee != null) {
-*/
+
             Intent launch = new Intent(this, ActivityHome.class);
             startActivity(launch);
-/*        } else {
+         } else {
             AlertContrasenñaBad();
-        }*/
+           Usuario.setText("");
+           Password.setText("");
+        }
+        */
+
+        // Login THing
+        SQL_UserMobile myUser = new SQL_UserMobile(this);
+
+        if(myUser.checkLogin(Usuario.getText().toString(),Password.getText().toString()))
+        {
+            Usuario.setText("");
+            Password.setText("");
+            Intent launch = new Intent(this, ActivityHome.class);
+            startActivity(launch);
+        } else
+        {
+            Usuario.setText("");
+            Password.setText("");
+            AlertContrasenñaBad();
+        }
 
     }
 

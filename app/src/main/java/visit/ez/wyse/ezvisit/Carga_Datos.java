@@ -101,64 +101,121 @@ public class Carga_Datos extends Activity {
                         //Este metodo te devuelve la cantidad de registros
                         //sync.getIntegrityFull("","","",_cont);
 
+                        //Creando Variable para determinar si vale la pena continuar el proceso
+                        int flagResult = 0;
+                        /*
+                        flagResult va a ser igual a una variedad de numeros negativos
+                        si algo malo sucedio. Si todo sale bien se mantendra sobre 0
+                        Las condicionales de mas adelante estan para prevenir que se guarden
+                        respuestas que son basicamente codigos de error en la base de datos
+                         */
 
                         //Obteniendo Empleado
-                        sync.getEmployee(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            flagResult = sync.getEmployee(User, Clave, 0, _cont);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(1);
+                        //Obteniendo datos del usuario especifico
+                        if(flagResult>=0) {
+                            flagResult = sync.getUserMobile(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo ClienteMaestro
-                        sync.getClienteMaestro(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(1);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(2);
+                        if(flagResult>=0) {
+                            //Obteniendo ClienteMaestro
+                            sync.getClienteMaestro(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo ClienteContacto
-                        sync.getClienteContacto(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(2);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(3);
+                        if(flagResult>=0) {
+                            //Obteniendo ClienteContacto
+                            sync.getClienteContacto(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo ClienteMaestro
-                        sync.getClientAddress(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(3);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(4);
+                        if(flagResult>=0) {
+                            //Obteniendo ClienteMaestro
+                            sync.getClientAddress(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo ClientAsignados
-                        sync.getClientAsignados(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(4);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(5);
+                        if(flagResult>=0) {
+                            //Obteniendo ClientAsignados
+                            sync.getClientAsignados(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo ClientTipos
-                        sync.getClientTipos(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(5);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(6);
+                        if(flagResult>=0) {
+                            //Obteniendo ClientTipos
+                            sync.getClientTipos(User, Clave, 0, _cont);
+                        }
 
-                        //Obteniendo Zonas
-                        sync.getZonas(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(6);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(7);
+                        if(flagResult>=0) {
+                            //Obteniendo Zonas
+                            sync.getZonas(User, Clave, 0, _cont);
+                        }
 
-                        sync.getContactoTipos(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(7);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(8);
+                        if(flagResult>=0) {
+                            sync.getContactoTipos(User, Clave, 0, _cont);
+                        }
 
-                        sync.getEmployeeTipos(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(8);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(9);
+                        if(flagResult>=0) {
+                            sync.getEmployeeTipos(User, Clave, 0, _cont);
+                        }
 
-                        sync.getPTTipos(User, Clave, 0, _cont);
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(9);
+                        }
 
-                        //Reportando Progreso
-                        ReportarProgreso(10);
+                        if(flagResult>=0) {
+                            sync.getPTTipos(User, Clave, 0, _cont);
+                        }
 
+                        if(flagResult>=0) {
+                            //Reportando Progreso
+                            ReportarProgreso(10);
+                        }
+
+                        if(flagResult>=0) {
+                            // Creando usuario para login regular
+
+                        }
 
                         endSync = true;
 
@@ -178,6 +235,9 @@ public class Carga_Datos extends Activity {
                             finish();
                         } else {
                             AlertCargaDatoFail();
+
+                            Usuario.setText("");
+                            Password.setText("");
                         }
                     } catch (Exception e) {
                         dialogProcess.dismiss();

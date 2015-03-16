@@ -19,6 +19,7 @@ public class Sqlite extends SQLiteOpenHelper{
 
 	// Table List
 	public static final String TABLE_UserMaster = "UserMaster";
+    public static final String TABLE_UserMobile = "UserMobile";
     public static final String TABLE_ClienteMaestro = "ClienteMaestro";
     public static final String TABLE_ClientTipos = "ClientTipos";
     public static final String TABLE_ClienteContacto = "ClienteContacto";
@@ -38,6 +39,7 @@ public class Sqlite extends SQLiteOpenHelper{
 
 	// Creation SQL
 	private static final String DATABASE_CREATE_UserMaster = Variable_Static.UserMaster;
+    private static final String DATABASE_CREATE_UserMobile = Variable_Static.UserMobile;
     private static final String DATABASE_CREATE_ClienteMaestro = Variable_Static.ClienteMaestro;
     private static final String DATABASE_CREATE_ClientTipos = Variable_Static.ClientTipos;
     private static final String DATABASE_CREATE_ClienteContacto = Variable_Static.ClienteContacto;
@@ -89,6 +91,7 @@ public class Sqlite extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		try {
             db.execSQL( DATABASE_CREATE_UserMaster );
+            db.execSQL( DATABASE_CREATE_UserMobile );
             db.execSQL( DATABASE_CREATE_ClienteMaestro );
             db.execSQL( DATABASE_CREATE_ClientTipos );
             db.execSQL( DATABASE_CREATE_ClienteContacto );
@@ -124,6 +127,7 @@ public class Sqlite extends SQLiteOpenHelper{
 		try {
 			// Destroying everything
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_UserMaster );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_UserMobile );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ClienteMaestro );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ClientTipos );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ClienteContacto );
