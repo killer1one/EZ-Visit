@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="51dp"
         android:id="@+id/spinTipoCliente"
         android:spinnerMode="dropdown" />
@@ -64,13 +64,13 @@
     </LinearLayout>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="51dp"
         android:id="@+id/spinEspec"
         android:spinnerMode="dropdown" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="51dp"
         android:id="@+id/spinClasificacion"
         android:spinnerMode="dropdown" />

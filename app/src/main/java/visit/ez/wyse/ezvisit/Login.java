@@ -12,8 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
 import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
 
@@ -25,6 +23,7 @@ public class Login extends ActionBarActivity {
     String Contrasenña = "prueba";
     public Sqlite myConn;
     public Context _cont;
+    public EditText Usuario,Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +32,23 @@ public class Login extends ActionBarActivity {
         _cont = this;
         myConn = new Sqlite(_cont, null, 1);
 
+        Usuario = (EditText)findViewById(R.id.EditUsuario);
+        Password = (EditText)findViewById(R.id.EditContrasena);
+
        // new mySoapCall().execute("","");
 
     }
 
     public void IniciarSesion(View v){
-        ArrayList<String> Employee = new ArrayList<String>();
+  /*      ArrayList<String> Employee = new ArrayList<String>();
+        Employee = SQL_Employee.getEmployee(Usuario.getText().toString(), Password.getText().toString(), myConn);
         if (Employee != null) {
-
+*/
             Intent launch = new Intent(this, ActivityHome.class);
             startActivity(launch);
-        } else {
-
-        }
+/*        } else {
+            AlertContrasenñaBad();
+        }*/
 
     }
 

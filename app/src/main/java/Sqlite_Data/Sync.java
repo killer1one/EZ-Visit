@@ -109,19 +109,22 @@ public class Sync {
                 // Assigning the response of the server to a soap object
                 //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
                 try {
                     SQL_Zonas myLisKPI = new SQL_Zonas(_Cont);
                     Data_Zonas Data = new Data_Zonas();
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{ZonaID=-10; MasterID=anyType{}; Descripcion=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-                        Data.Descripcion = ic.getProperty(0).toString().trim();
+                        Data.ZonaID = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
-                        Data.ZonaID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.Descripcion = ic.getProperty(2).toString().trim();
 
                         myLisKPI.saveRecord(Data);
                     }
@@ -368,6 +371,8 @@ public class Sync {
                 // Assigning the response of the server to a soap object
                 //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
 
                 SQL_PTTipos myHisfKPI = new SQL_PTTipos(_Cont);
                 Data_PTTipos Data = new Data_PTTipos();
@@ -375,14 +380,14 @@ public class Sync {
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{PTTipos=anyType{}; Descripcion=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-                        Data.Descripcion = ic.getProperty(0).toString().trim();
                         Data.PTTipo = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.Descripcion = ic.getProperty(0).toString().trim();
 
                         myHisfKPI.saveRecord(Data);
 
@@ -506,18 +511,19 @@ public class Sync {
                 Data_EmployeeTipos Data = new Data_EmployeeTipos();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{EmployeeTipo=-10; Descripcion=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-                        Data.Descripcion = ic.getProperty(1).toString().trim();
                         Data.EmployeeTipo = Integer.valueOf(ic.getProperty(0).toString().trim());
-
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
 
                         myEmpl.saveRecord(Data);
 
@@ -570,20 +576,30 @@ public class Sync {
                 Data_Employee Data = new Data_Employee();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                //SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
+                // Getting all sub-elements of responseMsg
+                SoapObject ic_temp = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < ic_temp.getPropertyCount(); i++)
                     {
 
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)ic_temp.getProperty(i);
 
-                        Data.EmpApellido = ic.getProperty(0).toString().trim();
+                        //anyType{EmployeeID=-10; EmployeeCode=anyType{}; MasterID=anyType{}; SuperID=anyType{}; EmpNombre=anyType{}; EmpApellido=anyType{}; EmployeeTipo=anyType{}; ZonaID=anyType{}; }
+
+                        Data.EmployeeID = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.EmployeeCode = ic.getProperty(1).toString().trim();
-                        Data.EmployeeID = Integer.valueOf(ic.getProperty(2).toString().trim());
-                        Data.EmployeeTipo = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        //SuperID
                         Data.EmpNombre = ic.getProperty(4).toString().trim();
-                        Data.MasterID = Integer.valueOf(ic.getProperty(5).toString().trim());
+                        Data.EmpApellido = ic.getProperty(5).toString().trim();
+                        Data.EmployeeTipo = Integer.valueOf(ic.getProperty(6).toString().trim());
+                        //ZonaID
+
 
                         myEmpl.saveRecord(Data);
                     }
@@ -636,21 +652,23 @@ public class Sync {
 
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{RegID=-10; MasterID=anyType{}; ClientID=anyType{}; EmployeeID=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
-
-                        Data.ClientID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.EmployeeID = Integer.valueOf(ic.getProperty(1).toString().trim());
-                        Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
-                        Data.RegID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
 
+                        Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.ClientID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.EmployeeID = Integer.valueOf(ic.getProperty(3).toString().trim());
 
                         myclienAsi.saveRecord(Data);
                     }
@@ -765,22 +783,25 @@ public class Sync {
                 Data_ClientAddress Data = new Data_ClientAddress();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        //anyType{item=anyType{ClientAddressID=-10; MasterID=anyType{}; ClientID=anyType{}; ClientDireccion=anyType{}; ClientLongitud=anyType{}; ClientLatitud=anyType{}; TipoAddress=anyType{}; }; }
+
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
                         Data.ClientAddressID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.ClientDireccion = ic.getProperty(1).toString().trim();
-                        Data.ClientID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.ClientLatitud = ic.getProperty(1).toString().trim();
-                        Data.ClientLongitud = ic.getProperty(1).toString().trim();
-                        Data.MasterID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.TipoAddress = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.ClientID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.ClientDireccion = ic.getProperty(3).toString().trim();
+                        Data.ClientLongitud = ic.getProperty(4).toString().trim();
+                        Data.ClientLatitud = ic.getProperty(5).toString().trim();
+                        Data.TipoAddress = Integer.valueOf(ic.getProperty(6).toString().trim());
 
                         myClienAdre.saveRecord(Data);
                     }
@@ -832,20 +853,19 @@ public class Sync {
                 Data_ContactoTipos Data = new Data_ContactoTipos();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{TipoContacto=-10; Descripcion=anyType{}; }; }
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-
-                        Data.Descripcion = ic.getProperty(1).toString().trim();
                         Data.TipoContacto = Integer.valueOf(ic.getProperty(0).toString().trim());
-
-
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
 
                         myCon.saveRecord(Data);
                     }
@@ -897,21 +917,23 @@ public class Sync {
                 Data_ClienteContacto Data = new Data_ClienteContacto();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{ClientContactID=-10; MasterID=anyType{}; ClientID=anyType{}; TipoContacto=anyType{}; NumeroTel=anyType{}; ClientCorreo=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
                         Data.ClientContactID = Integer.valueOf(ic.getProperty(0).toString().trim());
-                        Data.ClientCorreo = ic.getProperty(1).toString().trim();
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
                         Data.ClientID = Integer.valueOf(ic.getProperty(2).toString().trim());
-                        Data.MasterID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.TipoContacto = Integer.valueOf(ic.getProperty(3).toString().trim());
                         Data.NumeroTel = ic.getProperty(4).toString().trim();
-                        Data.TipoContacto = Integer.valueOf(ic.getProperty(5).toString().trim());
+                        Data.ClientCorreo = ic.getProperty(5).toString().trim();
 
 
                         myCon.saveRecord(Data);
@@ -966,19 +988,19 @@ public class Sync {
                 Data_ClientTipos Data = new Data_ClientTipos();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{ClientTipo=-10; Descripcion=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
                         Data.ClientTipo = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.Descripcion = ic.getProperty(1).toString().trim();
-
-
 
                         myCon.saveRecord(Data);
                     }
@@ -1083,24 +1105,31 @@ public class Sync {
                 Data_ClienteMaestro Data = new Data_ClienteMaestro();
 
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
+
                 try {
 
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
+                        //anyType{item=anyType{ClientID=-10; MasterID=anyType{}; ClientCode=anyType{}; ClientTipo=anyType{}; ClientNombre=anyType{}; ClientApellido=anyType{}; ClientContactID=anyType{}; ClientAddressID=anyType{}; }; }
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-                        Data.Clasificacion = ic.getProperty(0).toString().trim();
-                        Data.ClientAddressID = Integer.valueOf(ic.getProperty(1).toString().trim());
-                        Data.ClientApellido = ic.getProperty(2).toString().trim();
-                        Data.ClientCode = ic.getProperty(3).toString().trim();
-                        Data.ClientContactID = Integer.valueOf(ic.getProperty(4).toString().trim());
-                        Data.ClientID = Integer.valueOf(ic.getProperty(5).toString().trim());
-                        Data.ClientNombre = ic.getProperty(6).toString().trim();
-                        Data.ClientTipo = Integer.valueOf(ic.getProperty(7).toString().trim());
-                        Data.MasterID = Integer.valueOf(ic.getProperty(8).toString().trim());
+
+                        Data.ClientID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.ClientCode = ic.getProperty(2).toString().trim();
+                        Data.ClientTipo = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.ClientNombre = ic.getProperty(4).toString().trim();
+                        Data.ClientApellido = ic.getProperty(5).toString().trim();
+                        Data.ClientContactID = Integer.valueOf(ic.getProperty(6).toString().trim());
+                        Data.ClientAddressID = Integer.valueOf(ic.getProperty(7).toString().trim());
+
+
+                        //Data.Clasificacion = ic.getProperty(0).toString().trim();
 
 
                         myCon.saveRecord(Data);

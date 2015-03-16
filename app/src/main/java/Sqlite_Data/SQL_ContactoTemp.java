@@ -32,12 +32,13 @@ public class SQL_ContactoTemp {
         db.close();
     }
 
-    public long saveRecord(Data_DirrecionTemp myData)
+    public long saveRecord(Data_ContactoTemp myData)
     {
         try{
             ContentValues values = new ContentValues();
             values.put("DirTipo", myData.DirTipo);
-            values.put("Direccion", myData.Direccion);
+            values.put("Telefono", myData.Telefono);
+            values.put("Correo", myData.Correo);
 
             return db.insert(TABLE_NAME,null,values);
         } catch (Exception e) {
@@ -48,14 +49,14 @@ public class SQL_ContactoTemp {
 
 
 
-    public SimpleAdapter ShowDirTemp(Context contexto)
+    public SimpleAdapter ShowConTemp(Context contexto)
     {
 
 
         ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String,String>>();
         HashMap<String,String> map = new HashMap<String, String>();
 
-        String sql = "select Temp.Direccion, CT.Descripcion from "+TABLE_NAME+" Temp inner join ClientTipos CT on Temp.DirTipo = CT.ClientTipo order by Temp.Direccion";
+        String sql = "select Temp.Telefono,Temp.Correo, CT.Descripcion from "+TABLE_NAME+" Temp inner join ClientTipos CT on Temp.DirTipo = CT.ClientTipo order by Temp.Correo";
 
 
         c = db.rawQuery(sql, null);
@@ -66,8 +67,9 @@ public class SQL_ContactoTemp {
             do {
 
                 map = new HashMap<String, String>();
-                map.put("DirTipo",c.getString(1));
-                map.put("Direccion", c.getString(0));
+                map.put("DirTipo",c.getString(2));
+                map.put("Telefono", c.getString(0));
+                map.put("Correo", c.getString(1));
 
 
                 mylist.add(map);
@@ -75,13 +77,24 @@ public class SQL_ContactoTemp {
         } // if ends here
 
 
-        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_direciones,
-                    new String[] {"DirTipo", "Direccion "},  new int[] {R.id.txtTipoDir,R.id.txtDirecion});
+        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_Contacto,
+                    new String[] {"DirTipo", "Telefono ", "Correo"},  new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
 
 
 
         return idsAdapter;
     } // Method ends here
 
+
+    public void getAllData(Context contexto)
+    {
+        c = db.rawQuery("SELECT DirTipo, Telefono, Correo FROM " + TABLE_NAME, null);
+
+    } // Method ends here
+
+    public Cursor getCursor()
+    {
+        return c;
+    }
 
 }

@@ -1,21 +1,74 @@
 package visit.ez.wyse.ezvisit;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import Sqlite_Data.Data_ClientAddress;
+import Sqlite_Data.Data_ClienteContacto;
+import Sqlite_Data.Data_ClienteMaestro;
+import Sqlite_Data.SQL_ClientAddress;
+import Sqlite_Data.SQL_ClientTipos;
+import Sqlite_Data.SQL_ClienteContacto;
+import Sqlite_Data.SQL_ClienteMaestro;
+import Sqlite_Data.SQL_ContactoTemp;
+import Sqlite_Data.SQL_DirrecionTemp;
+
 
 public class Registrar_Clientes extends ActionBarActivity {
+
+    public SQL_ClientTipos CliTipo;
+    public SQL_ClienteMaestro CliMaes;
+    public SQL_DirrecionTemp DirTemp;
+    public SQL_ContactoTemp ConTemp;
+
+    public SQL_ClientAddress CLiDir;
+    public SQL_ClienteContacto CLiCon;
+
+
+    public Context _Con;
+    EditText editNombre, editApellido;
+    Spinner spClasificacion,spTipoCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registrar_cliente);
+        _Con = this;
+
+        CliTipo = new SQL_ClientTipos(_Con);
+        CliMaes = new SQL_ClienteMaestro(_Con);
+        //Temp
+        DirTemp = new SQL_DirrecionTemp(_Con);
+        ConTemp = new SQL_ContactoTemp(_Con);
+
+        CLiDir = new SQL_ClientAddress(_Con);
+        CLiCon = new SQL_ClienteContacto(_Con);
+
+
+        // Stuff
+         spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
+        spTipoCliente.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
+
+         spClasificacion = (Spinner)findViewById(R.id.spinClasificacion);
+        spClasificacion.setAdapter(CliTipo.ListaClasificacion(_Con));
+
+        Spinner spEspec = (Spinner)findViewById(R.id.spinEspec);
+
+         editNombre = (EditText)findViewById(R.id.editNombre);
+         editApellido = (EditText)findViewById(R.id.editApellido);
+
+
     }
 
 
@@ -62,12 +115,92 @@ public class Registrar_Clientes extends ActionBarActivity {
 
     public void SalvarCliente(View v)
     {
-        // Stuff
-        Spinner spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
-        EditText editNombre = (EditText)findViewById(R.id.editNombre);
-        EditText editApellido = (EditText)findViewById(R.id.editApellido);
 
-        Spinner spEspec = (Spinner)findViewById(R.id.spinEspec);
-        Spinner spClasificacion = (Spinner)findViewById(R.id.spinClasificacion);
+        try{
+            Data_ClienteMaestro mycli = new Data_ClienteMaestro();
+
+            mycli.Clasificacion = spClasificacion.getSelectedItem().toString();
+            mycli.ClientAddressID = 0;
+            mycli.ClientApellido = editApellido.getText().toString();
+            mycli.ClientCode = "";
+            mycli.ClientContactID = 1;
+            mycli.ClientID = 0;
+            mycli.ClientNombre = editNombre.getText().toString();
+            mycli.ClientTipo = 0;
+            mycli.MasterID = 0;
+
+            CliMaes.saveRecord(mycli);
+
+
+
+            // Getting the temporal detail list
+            ConTemp.getAllData(this);
+
+            Cursor TempListCon = ConTemp.getCursor();
+            Data_ClienteContacto DetalleConcta = new Data_ClienteContacto();
+
+            if (TempListCon.moveToFirst())
+            {
+                //Recorremos el cursor hasta que no haya m�s registros
+                do {
+                    //DirTipo, Telefono, Correo
+
+                    DetalleConcta.ClientCorreo = TempListCon.getString(2);
+                    DetalleConcta.NumeroTel = TempListCon.getString(1);
+                    DetalleConcta.TipoContacto = TempListCon.getInt(0);
+
+                    CLiCon.saveRecord(DetalleConcta);
+
+
+                } while(TempListCon.moveToNext());
+
+            } // if ends here
+
+
+
+            DirTemp.getAllData(this);
+
+            Cursor TempListDir = DirTemp.getCursor();
+            Data_ClientAddress DetalleAdres = new Data_ClientAddress();
+
+            if (TempListDir.moveToFirst())
+            {
+                //Recorremos el cursor hasta que no haya m�s registros
+                do {
+                    //DirTipo, Direccion
+
+                    DetalleAdres.ClientDireccion = TempListCon.getString(1);
+                    DetalleAdres.TipoAddress = TempListCon.getInt(0);
+
+                    CLiDir.saveRecord(DetalleAdres);
+
+
+                } while(TempListDir.moveToNext());
+
+            } // if ends here
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+        AlertSave();
+
+    }
+
+
+    public void AlertSave(){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(Registrar_Clientes.this);
+
+        alert.setTitle("Mensaje");
+        alert.setMessage("El cliente Se Guardo Correctamente");
+        alert.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+
+        alert.show();
     }
 }

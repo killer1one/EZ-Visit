@@ -1,21 +1,45 @@
 package visit.ez.wyse.ezvisit;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import Sqlite_Data.Data_DirrecionTemp;
+import Sqlite_Data.SQL_ClientTipos;
+import Sqlite_Data.SQL_DirrecionTemp;
 
 
 public class AnadirDir extends ActionBarActivity {
+
+    public SQL_ClientTipos CliTipo;
+    public SQL_DirrecionTemp SqlDirTemp;
+    public Context _Con;
+    Spinner spTipoDir;
+    EditText editDir;
+    ListView myList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anadir_direccion);
+
+        _Con = this;
+        CliTipo = new SQL_ClientTipos(_Con);
+        SqlDirTemp = new SQL_DirrecionTemp(_Con);
+
+        myList = (ListView)findViewById(R.id.listViiewDir);
+
+        // Getting the objects
+        spTipoDir = (Spinner)findViewById(R.id.spinTipoDir);
+        spTipoDir.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
+        editDir= (EditText)findViewById(R.id.editDir);
     }
 
 
@@ -43,9 +67,14 @@ public class AnadirDir extends ActionBarActivity {
 
     public void AddDir(View v)
     {
-        // Getting the objects
-        Spinner spTipoDir = (Spinner)findViewById(R.id.spinTipoDir);
-        EditText editDir= (EditText)findViewById(R.id.editDir);
+
+        Data_DirrecionTemp myDirTemp = new Data_DirrecionTemp();
+        myDirTemp.Direccion = editDir.getText().toString();
+        myDirTemp.DirTipo = CliTipo.getCLienteTipo(spTipoDir.getSelectedItem().toString());
+
+        SqlDirTemp.saveRecord(myDirTemp);
+
+        myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
     }
 
@@ -56,6 +85,6 @@ public class AnadirDir extends ActionBarActivity {
 
     public void SalvarDir(View v)
     {
-        // Stuff
+        finish();
     }
 }

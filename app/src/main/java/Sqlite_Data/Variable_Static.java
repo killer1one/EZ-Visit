@@ -110,4 +110,19 @@ public class Variable_Static {
             "[ConfigID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,\n" +
             "[Descripcion] VARCHAR( 100 ) NOT NULL )";
 
+
+
+    /*Tablas Temporales*/
+
+    public static String DirrecionesTemp = "CREATE TABLE [DirrecionTemp] (\n" +
+                "[DirTipo] INTEGER NOT NULL ,\n" +
+                "[Direccion] VARCHAR( 100 ) NOT NULL )";
+
+    public static String ContactoTemp = "CREATE TABLE [ContactoTemp] (\n" +
+            "[DirTipo] INTEGER NOT NULL ,\n" +
+            "[Telefono] VARCHAR( 100 ) NOT NULL, " +
+            "[Correo] VARCHAR( 100 ) NOT NULL )";
+
+
+
 }

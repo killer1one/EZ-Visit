@@ -34,6 +34,8 @@ public class Sqlite extends SQLiteOpenHelper{
     public static final String TABLE_ConfiguracionKPI = "ConfiguracionKPI";
     public static final String TABLE_ListaKPI = "ListaKPI";
 
+
+
 	// Creation SQL
 	private static final String DATABASE_CREATE_UserMaster = Variable_Static.UserMaster;
     private static final String DATABASE_CREATE_ClienteMaestro = Variable_Static.ClienteMaestro;
@@ -50,6 +52,14 @@ public class Sqlite extends SQLiteOpenHelper{
     private static final String DATABASE_CREATE_HistorialDes = Variable_Static.HistorialDes;
     private static final String DATABASE_CREATE_ConfiguracionKPI = Variable_Static.ConfiguracionKPI;
     private static final String DATABASE_CREATE_ListaKPI = Variable_Static.ListaKPI;
+
+
+    //Tablas Temporales
+    public static final String TABLE_DirrecionTemp = "DirrecionTemp";
+    private static final String DATABASE_CREATE_DirrecionTemp = Variable_Static.DirrecionesTemp;
+
+    public static final String TABLE_ContactoTemp = "ContactoTemp";
+    private static final String DATABASE_CREATE_ContactoTemp = Variable_Static.ContactoTemp;
 
 
 
@@ -93,6 +103,11 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL( DATABASE_CREATE_HistorialDes );
             db.execSQL( DATABASE_CREATE_ConfiguracionKPI );
             db.execSQL( DATABASE_CREATE_ListaKPI );
+
+            //Temp
+            db.execSQL( DATABASE_CREATE_DirrecionTemp );
+            db.execSQL( DATABASE_CREATE_ContactoTemp );
+
         } catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -123,6 +138,11 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_HistorialDes );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ConfiguracionKPI );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ListaKPI );
+
+
+            //Temp
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_DirrecionTemp );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_ContactoTemp );
 
             // Calling to re-create everything
 			onCreate(db);

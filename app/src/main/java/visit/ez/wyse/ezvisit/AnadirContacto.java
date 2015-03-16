@@ -1,20 +1,46 @@
 package visit.ez.wyse.ezvisit;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import Sqlite_Data.Data_ContactoTemp;
+import Sqlite_Data.SQL_ClientTipos;
+import Sqlite_Data.SQL_ContactoTemp;
 
 
 public class AnadirContacto extends ActionBarActivity {
+
+    public SQL_ClientTipos CliTipo;
+    public SQL_ContactoTemp SqlConTemp;
+    public Context _Con;
+    EditText editTelefono;
+    EditText editCorreo;
+    ListView myList;
+    Spinner spTipoContacto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anadir_contacto);
+        _Con = this;
+
+        CliTipo = new SQL_ClientTipos(_Con);
+        SqlConTemp = new SQL_ContactoTemp(_Con);
+
+         spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
+        spTipoContacto.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
+        myList = (ListView)findViewById(R.id.listViewContactos);
+
+         editTelefono = (EditText)findViewById(R.id.editTel);
+         editCorreo = (EditText)findViewById(R.id.editMail);
     }
 
 
@@ -43,9 +69,15 @@ public class AnadirContacto extends ActionBarActivity {
     public void AddContacto(View v)
     {
         // Getting the objects
-        Spinner spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
-        EditText editTelefono = (EditText)findViewById(R.id.editTel);
-        EditText editCorreo = (EditText)findViewById(R.id.editMail);
+        Data_ContactoTemp myConTemp = new Data_ContactoTemp();
+        myConTemp.Correo = editCorreo.getText().toString();
+        myConTemp.DirTipo = CliTipo.getCLienteTipo(spTipoContacto.getSelectedItem().toString());;
+        myConTemp.Telefono = editTelefono.getText().toString();
+
+        SqlConTemp.saveRecord(myConTemp);
+
+        myList.setAdapter(SqlConTemp.ShowConTemp(_Con));
+
 
         // Transferir los valores a la lista
     }
@@ -57,6 +89,6 @@ public class AnadirContacto extends ActionBarActivity {
 
     public void SalvarContacto(View v)
     {
-        // Stuff
+        finish();
     }
 }

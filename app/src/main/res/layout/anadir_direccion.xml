@@ -12,8 +12,9 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="291dp"
-        android:id="@+id/listViiewDir" />
+        android:layout_height="260dp"
+        android:id="@+id/listViiewDir"
+        android:layout_weight="1" />
 
     <Button
         android:layout_width="match_parent"

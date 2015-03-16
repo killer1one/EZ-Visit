@@ -6,6 +6,7 @@ package Sqlite_Data;
 public class Data_ContactoTemp {
 
     public int DirTipo = 0;
-    public String Direccion = null;
+    public String Telefono = null;
+    public String Correo = null;
 
 }
