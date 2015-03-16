@@ -13,25 +13,27 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <ImageButton
                 android:layout_width="65dp"
                 android:layout_height="59dp"
-                android:id="@+id/button"
+                android:id="@+id/bVisitas"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="17dp"
+                android:onClick="GoPlanTrabajo"
                 android:background="@null"
-                android:src="@drawable/visitas" />
+                android:src="@drawable/solicitudes_actualizacion"
+                android:layout_gravity="center_vertical" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Visitas"
+                android:text="@string/txt_planTrabajo"
                 android:id="@+id/textView16"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="12dp" />
@@ -40,118 +42,32 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="65dp"
+                android:layout_height="59dp"
                 android:text="New Button"
                 android:id="@+id/button2"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:onClick="GoRegistroClientes"
                 android:background="@null"
-                android:layout_marginTop="17dp"
-                android:src="@drawable/gastos" />
+                android:src="@drawable/visitas"
+                android:layout_gravity="center_vertical" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Gastos"
+                android:text="@string/txt_registroCliente"
                 android:id="@+id/textView142"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="12dp" />
         </LinearLayout>
-
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@null"
-                android:layout_marginTop="17dp"
-                android:src="@drawable/entrega" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Entrega de Muestra"
-                android:id="@+id/textView1432"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button4"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@null"
-                android:layout_marginTop="17dp"
-                android:src="@drawable/operativos" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Operativo"
-                android:id="@+id/textView143213"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button5"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@null"
-                android:layout_marginTop="17dp"
-                android:src="@drawable/solicitudes_actualizacion" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Solicitudes de Actualizacion de cliente"
-                android:id="@+id/textView14323313"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
-        </LinearLayout>
-
-
-
 
     </LinearLayout>
 </RelativeLayout>

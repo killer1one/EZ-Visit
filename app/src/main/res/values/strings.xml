@@ -18,6 +18,10 @@
     <string name="txt_apellidocliente">Apellido del Cliente</string>
     <string name="txt_tipoCliente">Tipo de Cliente</string>
     <string name="txt_cliente">Cliente</string>
+    <string name="txt_anadircliente">Añadir Cliente</string>
+    <string name="txt_buscarCliente">Buscar Cliente</string>
+    <string name="txt_registroCliente">Registro de Clientes</string>
+
     <string name="txt_anadirdir">Añadir direcciones</string>
     <string name="txt_anadircontacto">Añadir Contacto</string>
 
@@ -37,12 +41,20 @@
     <string name="txt_programada">Visita Programada</string>
     <string name="txt_tipoVisita">Tipo de Visita</string>
     <string name="txt_estadoVisita">Estado de Visita</string>
+    <string name="txt_anadirVisita">Nueva Visita</string>
 
     <string name="txt_entregamuestras">Entrega de Muestras</string>
     <string name="txt_objetivoprox">Objetivo Próxima Visita</string>
     <string name="txt_comentarios">Comentarios</string>
 
     <string name="txt_planTrabajo">Plan de Trabajo</string>
+    <string name="title_activity_plan__trabajo">Plan de Trabajo</string>
+    <string name="title_activity_registrar__clientes">Clientes</string>
+    <string name="title_activity_registrar__visita">Registrar Visita</string>
+    <string name="title_activity_seleccion__cliente">Clientes</string>
+    <string name="title_activity_anadir_dir">Dirección</string>
+    <string name="title_activity_anadir_contacto">Contactos</string>
+
 
 
 

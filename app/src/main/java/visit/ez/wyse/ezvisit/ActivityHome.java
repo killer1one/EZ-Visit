@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class ActivityHome extends ActionBarActivity {
@@ -57,6 +58,21 @@ public class ActivityHome extends ActionBarActivity {
                 return true;
 
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public void GoPlanTrabajo(View v)
+    {
+        // Go to Plan Trabajo
+        Intent launchThing = new Intent(this, Plan_Trabajo.class);
+        startActivity(launchThing);
+    }
+
+    public void GoRegistroClientes(View v)
+    {
+        // Go to Registro Clientes
+        Intent launchThing = new Intent(this, Registrar_Clientes.class);
+        startActivity(launchThing);
     }
 }
