@@ -12,7 +12,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="495dp"
+        android:layout_height="436dp"
         android:id="@+id/listVisitas"
         android:choiceMode="singleChoice" />
 

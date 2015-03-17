@@ -37,7 +37,7 @@ public class Registrar_Clientes extends ActionBarActivity {
 
     public Context _Con;
     EditText editNombre, editApellido;
-    Spinner spClasificacion,spTipoCliente;
+    Spinner spClasificacion,spTipoCliente, spEspec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,9 @@ public class Registrar_Clientes extends ActionBarActivity {
         // Stuff
         spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
         spTipoCliente.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
+        spEspec = (Spinner)findViewById(R.id.spinEspec);
+        //spEspec.setAdapter();
 
         spClasificacion = (Spinner)findViewById(R.id.spinClasificacion);
         spClasificacion.setAdapter(CliTipo.ListaClasificacion(_Con));
@@ -129,8 +132,6 @@ public class Registrar_Clientes extends ActionBarActivity {
 
             CliMaes.saveRecord(mycli);
 
-
-
             // Getting the temporal detail list
             ConTemp.getAllData(this);
 
@@ -163,7 +164,7 @@ public class Registrar_Clientes extends ActionBarActivity {
 
             if (TempListDir.moveToFirst())
             {
-                //Recorremos el cursor hasta que no haya m�s registros
+                //Recorremos el cursor hasta que no haya mas registros
                 do {
                     //DirTipo, Direccion
 

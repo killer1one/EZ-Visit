@@ -77,7 +77,7 @@ public class SQL_ContactoTemp {
         } // if ends here
 
 
-        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_Contacto,
+        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_contacto,
                     new String[] {"DirTipo", "Telefono", "Correo"},  new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
 
 
