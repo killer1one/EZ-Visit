@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class Carga_Datos extends Activity {
     public float myProcesosBarra = 0;
     public float mySignalBarra = 0;
     public int p = 0;
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class Carga_Datos extends Activity {
         setContentView(R.layout.activity_carga__datos);
 
         _cont = this;
-
+        btnLogin = (Button) findViewById(R.id.btn_Inicial_Carga);
         myConn = new Sqlite(_cont, null, 1);
         db = myConn.getWritableDatabase();
 
@@ -234,7 +236,25 @@ public class Carga_Datos extends Activity {
                             startActivity(new Intent(Carga_Datos.this,ActivityHome.class));
                             finish();
                         } else {
-                            AlertCargaDatoFail();
+
+                            Runnable runnable = new Runnable()
+                            {
+
+                                public void run()
+                                {
+                                    AlertDialog.Builder a = new AlertDialog.Builder(Carga_Datos.this);
+                                    a.setIcon(android.R.drawable.ic_dialog_alert);
+                                    a.setTitle("Error");
+                                    a.setMessage("Error Haciendo la carga de datos por favor intente de Nuevo..");
+                                    a.setPositiveButton(android.R.string.yes, null);
+                                    a.setNegativeButton(android.R.string.no, null);
+                                    a.show();
+                                }
+                            };
+
+                            btnLogin.post(runnable);
+
+                            //AlertCargaDatoFail();
 
                             Usuario.setText("");
                             Password.setText("");

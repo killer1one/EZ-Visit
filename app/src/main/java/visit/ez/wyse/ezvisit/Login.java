@@ -12,9 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
-import Sqlite_Data.SQL_Employee;
 import Sqlite_Data.SQL_UserMobile;
 import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
@@ -174,6 +171,27 @@ public class Login extends ActionBarActivity {
 
 
     public void AlertContrasenñaBad(){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
+
+        alert.setTitle("Error");
+        alert.setMessage("La Contraseña de Ez-Visit que dígito esta incorrecta Intenta de Nuevo");
+        alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        alert.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        alert.show();
+    }
+
+    public void AlertContrasenñaBadCargaDatos(){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
 

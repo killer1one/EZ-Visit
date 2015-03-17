@@ -38,6 +38,7 @@ public class AnadirContacto extends ActionBarActivity {
         spTipoContacto.setAdapter(CliTipo.ListaClienteTipo(_Con));
 
         myList = (ListView)findViewById(R.id.listViewContactos);
+        myList.setAdapter(SqlConTemp.ShowConTemp(_Con));
 
          editTelefono = (EditText)findViewById(R.id.editTel);
          editCorreo = (EditText)findViewById(R.id.editMail);

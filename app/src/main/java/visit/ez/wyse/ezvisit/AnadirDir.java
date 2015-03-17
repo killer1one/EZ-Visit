@@ -34,6 +34,7 @@ public class AnadirDir extends ActionBarActivity {
         SqlDirTemp = new SQL_DirrecionTemp(_Con);
 
         myList = (ListView)findViewById(R.id.listViiewDir);
+        myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
         // Getting the objects
         spTipoDir = (Spinner)findViewById(R.id.spinTipoDir);

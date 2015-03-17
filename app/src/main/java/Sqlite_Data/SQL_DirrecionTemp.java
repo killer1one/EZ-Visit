@@ -76,7 +76,7 @@ public class SQL_DirrecionTemp {
 
 
         SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_direciones,
-                    new String[] {"DirTipo", "Direccion "},  new int[] {R.id.txtTipoDir,R.id.txtDirecion});
+                    new String[] {"DirTipo", "Direccion"},  new int[] {R.id.txtTipoDir,R.id.txtDirecion});
 
 
 
@@ -86,6 +86,12 @@ public class SQL_DirrecionTemp {
     public void getAllData(Context contexto)
     {
         c = db.rawQuery("SELECT DirTipo, Direccion FROM " + TABLE_NAME, null);
+
+    } // Method ends here
+
+    public void getDeleteAll()
+    {
+        db.execSQL("delete from "+TABLE_NAME);
 
     } // Method ends here
 

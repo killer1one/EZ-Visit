@@ -120,11 +120,11 @@ public class Registrar_Clientes extends ActionBarActivity {
             mycli.Clasificacion = spClasificacion.getSelectedItem().toString();
             mycli.ClientAddressID = 0;
             mycli.ClientApellido = editApellido.getText().toString();
-            mycli.ClientCode = "";
+            //mycli.ClientCode = "";
             mycli.ClientContactID = 1;
-            mycli.ClientID = 0;
+            //mycli.ClientID = 0;
             mycli.ClientNombre = editNombre.getText().toString();
-            mycli.ClientTipo = 0;
+            mycli.ClientTipo = CliTipo.getCLienteTipo(spTipoCliente.getSelectedItem().toString());
             mycli.MasterID = 0;
 
             CliMaes.saveRecord(mycli);
@@ -154,6 +154,8 @@ public class Registrar_Clientes extends ActionBarActivity {
 
             } // if ends here
 
+            ConTemp.getDeleteAll();
+
             DirTemp.getAllData(this);
 
             Cursor TempListDir = DirTemp.getCursor();
@@ -165,14 +167,16 @@ public class Registrar_Clientes extends ActionBarActivity {
                 do {
                     //DirTipo, Direccion
 
-                    DetalleAdres.ClientDireccion = TempListCon.getString(1);
-                    DetalleAdres.TipoAddress = TempListCon.getInt(0);
+                    DetalleAdres.ClientDireccion = TempListDir.getString(1);
+                    DetalleAdres.TipoAddress = TempListDir.getInt(0);
 
                     CLiDir.saveRecord(DetalleAdres);
 
                 } while(TempListDir.moveToNext());
 
             } // if ends here
+
+            DirTemp.getDeleteAll();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -191,6 +195,7 @@ public class Registrar_Clientes extends ActionBarActivity {
         alert.setMessage("El cliente Se Guardo Correctamente");
         alert.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                finish();
             }
         });
 

@@ -20,7 +20,7 @@ public class SQL_ContactoTemp {
     private Sqlite myConn;
     private SQLiteDatabase db;
     private Cursor c;
-    private static final String TABLE_NAME = Sqlite.TABLE_DirrecionTemp;
+    private static final String TABLE_NAME = Sqlite.TABLE_ContactoTemp;
 
     public SQL_ContactoTemp(Context context)
     {
@@ -77,8 +77,8 @@ public class SQL_ContactoTemp {
         } // if ends here
 
 
-        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_contacto,
-                    new String[] {"DirTipo", "Telefono ", "Correo"},  new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
+        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_Contacto,
+                    new String[] {"DirTipo", "Telefono", "Correo"},  new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
 
 
 
@@ -89,6 +89,12 @@ public class SQL_ContactoTemp {
     public void getAllData(Context contexto)
     {
         c = db.rawQuery("SELECT DirTipo, Telefono, Correo FROM " + TABLE_NAME, null);
+
+    } // Method ends here
+
+    public void getDeleteAll()
+    {
+        db.execSQL("delete from "+TABLE_NAME);
 
     } // Method ends here
 
