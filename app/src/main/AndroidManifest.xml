@@ -81,6 +81,10 @@
             android:name=".AnadirContacto"
             android:label="@string/title_activity_anadir_contacto" >
         </activity>
+        <activity
+            android:name=".recibir_muestras"
+            android:label="@string/title_activity_recibir_muestras" >
+        </activity>
     </application>
 
 </manifest>

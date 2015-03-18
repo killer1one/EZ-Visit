@@ -55,6 +55,11 @@
     <string name="title_activity_anadir_dir">Dirección</string>
     <string name="title_activity_anadir_contacto">Contactos</string>
 
+    <string name="title_activity_recibir_muestras">Recibir Muestras</string>
+    <string name="txt_lote">Lote: </string>
+    <string name="txt_razonlote">Razón de aceptación/rechazo </string>
+    <string name="txt_rechazarlote">Rechazar Lote</string>
+    <string name="txt_aceptarlote">Aceptar Lote</string>
 
 
 
