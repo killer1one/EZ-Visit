@@ -34,6 +34,10 @@ public class Sqlite extends SQLiteOpenHelper{
     public static final String TABLE_HistorialDes = "HistorialDes";
     public static final String TABLE_ConfiguracionKPI = "ConfiguracionKPI";
     public static final String TABLE_ListaKPI = "ListaKPI";
+    public static final String TABLE_ClienteDatosZ = "ClienteDatosZ";
+    public static final String TABLE_Especialidades = "Especialidades";
+    public static final String TABLE_Parrilla = "Parrilla";
+    public static final String TABLE_Productos = "Productos";
 
 
 
@@ -54,6 +58,11 @@ public class Sqlite extends SQLiteOpenHelper{
     private static final String DATABASE_CREATE_HistorialDes = Variable_Static.HistorialDes;
     private static final String DATABASE_CREATE_ConfiguracionKPI = Variable_Static.ConfiguracionKPI;
     private static final String DATABASE_CREATE_ListaKPI = Variable_Static.ListaKPI;
+    private static final String DATABASE_CREATE_ClienteDatosZ = Variable_Static.ClienteDatosZ;
+    private static final String DATABASE_CREATE_Especialidades = Variable_Static.Especialidades;
+    private static final String DATABASE_CREATE_Parrilla = Variable_Static.Parrilla;
+    private static final String DATABASE_CREATE_Productos = Variable_Static.Productos;
+
 
 
     //Tablas Temporales
@@ -106,6 +115,10 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL( DATABASE_CREATE_HistorialDes );
             db.execSQL( DATABASE_CREATE_ConfiguracionKPI );
             db.execSQL( DATABASE_CREATE_ListaKPI );
+            db.execSQL( DATABASE_CREATE_ClienteDatosZ );
+            db.execSQL( DATABASE_CREATE_Especialidades );
+            db.execSQL( DATABASE_CREATE_Parrilla );
+            db.execSQL( DATABASE_CREATE_Productos );
 
             //Temp
             db.execSQL( DATABASE_CREATE_DirrecionTemp );
@@ -142,7 +155,10 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_HistorialDes );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ConfiguracionKPI );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ListaKPI );
-
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_ClienteDatosZ );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_Especialidades );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_Parrilla );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_Productos );
 
             //Temp
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_DirrecionTemp );

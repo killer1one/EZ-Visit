@@ -1410,4 +1410,294 @@ public class Sync {
 
     }
 
+
+
+    public void getEspecialidades (String user, String pass, int ciclo, Context _Cont){
+
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getEspecialidades");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getEspecialidades", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_Especialidades myCon = new SQL_Especialidades(_Cont);
+                Data_Especialidades Data = new Data_Especialidades();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
+                    {
+                        //anyType{item=anyType{ClientContactID=-10; MasterID=anyType{}; ClientID=anyType{}; TipoContacto=anyType{}; NumeroTel=anyType{}; ClientCorreo=anyType{}; }; }
+
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
+
+                        Data.EspecID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.Descripcion = ic.getProperty(2).toString().trim();
+
+
+                        myCon.saveRecord(Data);
+
+
+
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+    }
+
+
+    public void getClienteDatosZ (String user, String pass, int ciclo, Context _Cont){
+
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getClienteDatosZ");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getClienteDatosZ", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_ClienteDatosZ myCon = new SQL_ClienteDatosZ(_Cont);
+                Data_ClienteDatosZ Data = new Data_ClienteDatosZ();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
+                    {
+                        //anyType{item=anyType{ClientContactID=-10; MasterID=anyType{}; ClientID=anyType{}; TipoContacto=anyType{}; NumeroTel=anyType{}; ClientCorreo=anyType{}; }; }
+
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
+
+                        Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.ClientID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.ZonaID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.EspecID = Integer.valueOf(ic.getProperty(4).toString().trim());
+                        Data.Clasificacion = ic.getProperty(5).toString().trim();
+
+
+
+                        myCon.saveRecord(Data);
+
+
+
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+    }
+
+
+
+    public void getParrilla (String user, String pass, int ciclo, Context _Cont){
+
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getParrilla");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getParrilla", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_Parrilla myCon = new SQL_Parrilla(_Cont);
+                Data_Parrilla Data = new Data_Parrilla();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
+                    {
+                        //anyType{item=anyType{ClientContactID=-10; MasterID=anyType{}; ClientID=anyType{}; TipoContacto=anyType{}; NumeroTel=anyType{}; ClientCorreo=anyType{}; }; }
+
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
+
+                        Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.PlanID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.EspecID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                        Data.ProductID = Integer.valueOf(ic.getProperty(4).toString().trim());
+                        Data.SugA = ic.getProperty(5).toString().trim();
+                        Data.SugB = ic.getProperty(6).toString().trim();
+                        Data.SugC = ic.getProperty(7).toString().trim();
+
+
+                        myCon.saveRecord(Data);
+
+
+
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+    }
+
+
+
+    public void getProductos (String user, String pass, int ciclo, Context _Cont){
+
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getProductos");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getProductos", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_Productos myCon = new SQL_Productos(_Cont);
+                Data_Productos Data = new Data_Productos();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
+                    {
+                        //anyType{item=anyType{ClientContactID=-10; MasterID=anyType{}; ClientID=anyType{}; TipoContacto=anyType{}; NumeroTel=anyType{}; ClientCorreo=anyType{}; }; }
+
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
+
+                        Data.ProductID = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                        Data.EspecID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                        Data.Nombre = ic.getProperty(5).toString().trim();
+
+
+
+                        myCon.saveRecord(Data);
+
+
+
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+    }
+
 }

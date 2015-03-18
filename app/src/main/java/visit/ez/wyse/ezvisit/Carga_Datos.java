@@ -216,7 +216,7 @@ public class Carga_Datos extends Activity {
 
                         if(flagResult>=0) {
                             // Creando usuario para login regular
-
+                            sync.getEspecialidades(User, Clave, 0, _cont);
                         }
 
                         endSync = true;
