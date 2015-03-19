@@ -54,10 +54,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:id="@+id/linearLayout3"
-        android:gravity="bottom"
-        android:layout_weight="0.13">
+        android:gravity="bottom">
 
         <Button
             android:layout_width="0dp"

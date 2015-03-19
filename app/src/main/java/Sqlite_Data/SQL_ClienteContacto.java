@@ -43,4 +43,18 @@ public class SQL_ClienteContacto {
         return 0;
     }
 
+    public String GetLastID()
+    {
+        String myResult;
+        c = db.rawQuery("select ClientContactID as numeroC,max(cast(ClientContactID as integer)) from "+TABLE_NAME,null);
+        if (c.moveToFirst())
+        {
+            myResult = c.getString(0);
+        } else
+        {
+            myResult = "0";
+        }
+        return myResult;
+    }
+
 }

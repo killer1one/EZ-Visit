@@ -1,19 +1,35 @@
 package visit.ez.wyse.ezvisit;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
+
+import Sqlite_Data.SQL_ClientTipos;
 
 
 public class Registrar_Visita extends ActionBarActivity {
+
+    Spinner spTipoCliente;
+    public SQL_ClientTipos CliTipo;
+    public Context _Con;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registrar_visita);
+        _Con = this;
+
+        CliTipo = new SQL_ClientTipos(_Con);
+
+        // Stuff
+        spTipoCliente = (Spinner)findViewById(R.id.spinTipo);
+        spTipoCliente.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
     }
 
 
