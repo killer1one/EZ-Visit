@@ -147,7 +147,22 @@ public class Variable_Static {
             "[EspecID] INTEGER NOT NULL, " +
             "[Nombre] VARCHAR( 100 ) NOT NULL )";
 
+    public static String ProductoLoteM = "CREATE TABLE [ProductoLoteM] (\n" +
+            "[LoteID] INTEGER NOT NULL ," +
+            "[MasterID] INTEGER NOT NULL, " +
+            "[PlanID] INTEGER NOT NULL, " +
+            "[EmployeeID] INTEGER NOT NULL, " +
+            "[Nota] VARCHAR( 255 ) NOT NULL, " +
+            "[FechaCreacion] DATE NOT NULL, \n" +
+            "[FechaAprobacion] DATE NOT NULL, \n" +
+            "[Aprobado] INTEGER NOT NULL )";
 
+    public static String ProductoLoteD = "CREATE TABLE [ProductoLoteD] (\n" +
+            "[RegID] INTEGER NOT NULL ," +
+            "[MasterID] INTEGER NOT NULL, " +
+            "[LoteID] INTEGER NOT NULL, " +
+            "[ProductID] INTEGER NOT NULL, \n" +
+            "[Cantidad] INTEGER NOT NULL, )";
 
     /*Tablas Temporales*/
 
@@ -159,7 +174,6 @@ public class Variable_Static {
             "[DirTipo] INTEGER NOT NULL ,\n" +
             "[Telefono] VARCHAR( 100 ) NOT NULL, " +
             "[Correo] VARCHAR( 100 ) NOT NULL )";
-
 
 
 }

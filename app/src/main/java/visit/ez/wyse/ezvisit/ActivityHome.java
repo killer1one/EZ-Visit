@@ -75,4 +75,11 @@ public class ActivityHome extends ActionBarActivity {
         Intent launchThing = new Intent(this, Registrar_Clientes.class);
         startActivity(launchThing);
     }
+
+    public void GoMuestras(View v)
+    {
+        // Go to Plan Trabajo
+        Intent launchThing = new Intent(this, recibir_muestras.class);
+        startActivity(launchThing);
+    }
 }

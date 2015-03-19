@@ -67,6 +67,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="CancelarTodo"
         android:text="@string/txt_cancelar"
         android:id="@+id/bCancelar" />
 

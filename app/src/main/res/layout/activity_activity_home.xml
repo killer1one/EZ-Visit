@@ -50,7 +50,7 @@
                 android:layout_width="65dp"
                 android:layout_height="59dp"
                 android:text="New Button"
-                android:id="@+id/button2"
+                android:id="@+id/bClientes"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -65,6 +65,35 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/txt_registroCliente"
                 android:id="@+id/textView142"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageButton
+                android:layout_width="65dp"
+                android:layout_height="59dp"
+                android:text="New Button"
+                android:id="@+id/bMuestras"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:onClick="GoMuestras"
+                android:background="@null"
+                android:src="@drawable/entrega"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/title_activity_recibir_muestras"
+                android:id="@+id/textView143"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="12dp" />
         </LinearLayout>

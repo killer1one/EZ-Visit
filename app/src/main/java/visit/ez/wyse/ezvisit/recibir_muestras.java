@@ -4,6 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import Sqlite_Data.SQL_ProductoLoteD;
 
 
 public class recibir_muestras extends ActionBarActivity {
@@ -12,6 +15,13 @@ public class recibir_muestras extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recibir_muestras);
+
+        // Getting the query and putting it on the listview
+        SQL_ProductoLoteD myLote = new SQL_ProductoLoteD(this);
+
+        ListView listLote = (ListView)findViewById(R.id.listLote);
+
+        listLote.setAdapter(myLote.GetListaLote(this));
     }
 
 
@@ -35,5 +45,10 @@ public class recibir_muestras extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void CancelarTodo()
+    {
+        finish();
     }
 }
