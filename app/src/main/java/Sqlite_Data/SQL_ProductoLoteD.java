@@ -44,17 +44,25 @@ public class SQL_ProductoLoteD
 
     public SelectableListAdapter<String> GetListaLote(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
-        idc.add("(Seleccione)");
 
-        c = db.rawQuery("select b.Nombre, a.Cantidad from "+TABLE_NAME+" a inner join " + Sqlite.TABLE_Productos + " b where a.ProductID = b.ProductID Order by a.ProductID", null);
+        c = db.rawQuery("select b.Nombre, a.Cantidad, c.Aprobado from " + Sqlite.TABLE_ProductoLoteM + " c, " +TABLE_NAME+" a inner join " + Sqlite.TABLE_Productos + " b where a.ProductID = b.ProductID and c.Aprobado = 0 Order by a.ProductID", null);
         // Getting the data from the select
         //Nos aseguramos de que existe al menos un registro
         if (c.moveToFirst())
         {
             //Recorremos el cursor hasta que no haya m�s registros
             do {
-                String nombre = c.getString(1) + " - " + c.getString(0);
-                idc.add(nombre);
+                // This its here only to pad numbers with 0
+                if(c.getInt(1)<10)
+                {
+                    String nombre = "0"+ c.getString(1) + " - " + c.getString(0);
+                    idc.add(nombre);
+                } else
+                {
+                    String nombre = c.getString(1) + " - " + c.getString(0);
+                    idc.add(nombre);
+                }
+
             } while(c.moveToNext());
         } // if ends here
 

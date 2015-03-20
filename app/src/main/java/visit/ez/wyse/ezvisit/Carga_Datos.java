@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,12 +38,17 @@ public class Carga_Datos extends Activity {
     public float myProcesosBarra = 0;
     public float mySignalBarra = 0;
     public int p = 0;
+    public int myOrientation = 0;
     Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga__datos);
+
+        // Lets lock the dang screen
+
+        myOrientation = getRequestedOrientation ();
 
         _cont = this;
         btnLogin = (Button) findViewById(R.id.btn_Inicial_Carga);
@@ -64,6 +70,8 @@ public class Carga_Datos extends Activity {
         // get Internet status Para ver si Tiene Internet
        // isInternetPresent = cd.isConnectingToInternet();
         //if (isInternetPresent) {
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
             dialogProcess = new ProgressDialog(this);
             dialogProcess.setMessage("Procesando solicitud Carga de Datos  favor espere.");
@@ -120,6 +128,20 @@ public class Carga_Datos extends Activity {
                         //Obteniendo datos del usuario especifico
                         if(flagResult>=0) {
                             flagResult = sync.getUserMobile(User, Clave, 0, _cont);
+                        }
+
+                        //Obteniendo datos del usuario especifico
+                        if(flagResult>=0) {
+                            flagResult = sync.getProductosLoteM(User, Clave, 0, _cont);
+                        }
+
+                        if(flagResult>=0) {
+                            flagResult = sync.getProductosLoteD(User, Clave, 0, _cont);
+                        }
+
+                        if(flagResult>=0) {
+                            //Obteniendo ClienteMaestro
+                            sync.getProductos(User, Clave, 0, _cont);
                         }
 
                         if(flagResult>=0) {
@@ -233,7 +255,9 @@ public class Carga_Datos extends Activity {
                         if (Employee != null) {
 
                             dialogProcess.dismiss();
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                             startActivity(new Intent(Carga_Datos.this,ActivityHome.class));
+
                             finish();
                         } else {
 

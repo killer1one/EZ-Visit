@@ -1,7 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -38,31 +37,10 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editRazon"
-        android:layout_weight="0.65" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_rechazarlote"
-            android:id="@+id/bRechazar"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_aceptarlote"
-            android:id="@+id/bAceptar"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:id="@+id/editRazon" />
 
     <Button
         android:layout_width="match_parent"
@@ -70,5 +48,30 @@
         android:onClick="CancelarTodo"
         android:text="@string/txt_cancelar"
         android:id="@+id/bCancelar" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutSave"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_rechazarlote"
+            android:onClick="RechazarLote"
+            android:id="@+id/bRechazar"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_aceptarlote"
+            android:onClick="AprobarLote"
+            android:id="@+id/bAceptar"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>

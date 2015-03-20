@@ -4,9 +4,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import Sqlite_Data.SQL_ProductoLoteD;
+import Sqlite_Data.SQL_ProductoLoteM;
 
 
 public class recibir_muestras extends ActionBarActivity {
@@ -22,6 +25,18 @@ public class recibir_muestras extends ActionBarActivity {
         ListView listLote = (ListView)findViewById(R.id.listLote);
 
         listLote.setAdapter(myLote.GetListaLote(this));
+
+        myLote.close();
+
+        //Tomando el ID para el lote
+        SQL_ProductoLoteM myLoteM = new SQL_ProductoLoteM(this);
+
+        TextView textLote = (TextView)findViewById(R.id.label_lote);
+
+        textLote.setText(String.valueOf(myLoteM.getLoteID()));
+
+        myLoteM.close();
+
     }
 
 
@@ -47,8 +62,34 @@ public class recibir_muestras extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void CancelarTodo()
+    public void CancelarTodo(View v)
     {
         finish();
     }
+
+    public void AprobarLote(View v)
+    {
+        SQL_ProductoLoteM myLoteM = new SQL_ProductoLoteM(this);
+
+        myLoteM.AprobarLote();
+
+        // Hay que añadir la creación de inventario aqui.
+
+        myLoteM.close();
+
+        finish();
+    }
+
+    public void RechazarLote(View v)
+    {
+        SQL_ProductoLoteM myLoteM = new SQL_ProductoLoteM(this);
+
+        myLoteM.RechazarLote();
+
+        myLoteM.close();
+
+        finish();
+    }
+
+
 }

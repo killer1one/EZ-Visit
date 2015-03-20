@@ -8,69 +8,57 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/toptext"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Indroduzca su nombre de Usuario y Contraseña para iniciar el proceso de carga de datos"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold|italic" />
+        android:paddingBottom="36dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/EditUsuario"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="41dp"
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/toptext"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:hint="User" />
+        android:layout_alignParentStart="true">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/EditContrasena"
-        android:layout_marginTop="66dp"
-        android:inputType="textPassword"
-        android:layout_below="@+id/EditUsuario"
-        android:layout_alignRight="@+id/EditUsuario"
-        android:layout_alignEnd="@+id/EditUsuario"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="PassWord" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Usuario:"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Usuario:"
+            android:id="@+id/textView2" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Contraseña:"
-        android:id="@+id/textView3"
-        android:layout_alignBottom="@+id/EditContrasena"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="36dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EditUsuario" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Contraseña:"
+            android:id="@+id/textView3" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EditContrasena"
+            android:inputType="textPassword" />
+
+        </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar Carga"
         android:id="@+id/btn_Inicial_Carga"
-        android:layout_below="@+id/EditContrasena"
+        android:layout_below="@+id/linearLayout5"
         android:onClick="CargaDatos"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp" />
+        android:layout_marginTop="42dp" />
 
 
 </RelativeLayout>

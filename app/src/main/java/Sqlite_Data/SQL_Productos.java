@@ -27,7 +27,6 @@ public class SQL_Productos {
 
     public long saveRecord(Data_Productos myData)
     {
-        try{
             ContentValues values = new ContentValues();
             values.put("ProductID", myData.ProductID);
             values.put("MasterID", myData.MasterID);
@@ -35,10 +34,7 @@ public class SQL_Productos {
             values.put("Nombre", myData.Nombre);
 
             return db.insert(TABLE_NAME,null,values);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+
     }
 
 }

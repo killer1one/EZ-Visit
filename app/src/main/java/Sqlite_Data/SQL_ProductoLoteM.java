@@ -45,7 +45,7 @@ public class SQL_ProductoLoteM
     // Este es para los labels o cualquier necesidad de saber el numero de lote
     public int getLoteID()
     {
-        int result = -1;
+        int result = 0;
         c = db.rawQuery("select LoteID from " + TABLE_NAME,null);
         if (c.moveToFirst())
         {
@@ -54,5 +54,20 @@ public class SQL_ProductoLoteM
         return result;
     }
 
+    public long AprobarLote()
+    {
+        ContentValues newValues = new ContentValues();
+        newValues.put("Aprobado", "1");
+
+        return db.update(TABLE_NAME, newValues, "Aprobado=0", null);
+    }
+
+    public long RechazarLote()
+    {
+        ContentValues newValues = new ContentValues();
+        newValues.put("Aprobado", "-1");
+
+        return db.update(TABLE_NAME, newValues, "Aprobado=0", null);
+    }
 
 }

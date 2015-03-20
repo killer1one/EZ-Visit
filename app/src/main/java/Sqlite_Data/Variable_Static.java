@@ -162,7 +162,7 @@ public class Variable_Static {
             "[MasterID] INTEGER NOT NULL, " +
             "[LoteID] INTEGER NOT NULL, " +
             "[ProductID] INTEGER NOT NULL, \n" +
-            "[Cantidad] INTEGER NOT NULL, )";
+            "[Cantidad] INTEGER NOT NULL )";
 
     /*Tablas Temporales*/
 

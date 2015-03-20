@@ -16,10 +16,19 @@
         android:id="@+id/listVisitas"
         android:choiceMode="singleChoice" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutSave"
+        android:gravity="bottom">
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_anadirVisita"
         android:onClick="GoNuevaVisita"
         android:id="@+id/bCrear" />
+
+    </LinearLayout>
 </LinearLayout>

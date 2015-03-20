@@ -633,6 +633,182 @@ public class Sync {
         return Success;
     }
 
+
+    //////////////////////////////////////////////////
+
+    public int getProductosLoteM (String user, String pass, int ciclo, Context _Cont){
+
+        int Success = 0;
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getProductoLoteM");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getProductoLoteM", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_ProductoLoteM myProLM = new SQL_ProductoLoteM(_Cont);
+                Data_ProductoLoteM Data = new Data_ProductoLoteM();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                //SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
+                // Getting all sub-elements of responseMsg
+                SoapObject ic_temp = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < ic_temp.getPropertyCount(); i++)
+                    {
+
+                        SoapObject  ic = (SoapObject)ic_temp.getProperty(i);
+
+                        //anyType{EmployeeID=-10; EmployeeCode=anyType{}; MasterID=anyType{}; SuperID=anyType{}; EmpNombre=anyType{}; EmpApellido=anyType{}; EmployeeTipo=anyType{}; ZonaID=anyType{}; }
+                        Data.LoteID = Integer.valueOf(ic.getProperty(0).toString().trim());
+
+
+                        if(Data.LoteID==-10)
+                        {
+                            // Password is incorrect
+                            Success = ERROR_FAILEDLOGIN;
+                        } else
+                        {
+                            // Password is Correct so let's continue
+                            Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                            Data.PlanID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                            Data.EmployeeID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                            Data.Nota = ic.getProperty(4).toString().trim();
+                            Data.FechaCreacion = ic.getProperty(5).toString().trim();
+                            Data.FechaAprobacion = ic.getProperty(6).toString().trim();
+                            Data.Aprobado = Integer.valueOf(ic.getProperty(7).toString().trim());
+
+                            myProLM.saveRecord(Data);
+                            Success = SUCCESSFUL_LOGIN;
+                        }
+
+                    } // The For Ends here
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+        return Success;
+    }
+
+    public int getProductosLoteD (String user, String pass, int ciclo, Context _Cont){
+
+        int Success = 0;
+        // Making the soap request object with its parameters
+        SoapObject request = new SoapObject(Configuracion.WS_NAMESPACE, "getProductoLoteD");
+
+        // Creating all the properties required by the service
+        request.addProperty("user", user);
+        request.addProperty("pass", pass);
+        request.addProperty("ciclo", ciclo);
+
+        // Creating the envelope of the soap request
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        // Creating transport method
+        HttpTransportSE transporte = new HttpTransportSE(Configuracion.UrlWSDL);
+        transporte.debug = true;
+
+        // the actual soap call
+        try
+        {
+            try {
+                transporte.call("urn:EZSoap/getProductoLoteD", envelope);
+                // Assigning the response of the server to a soap object
+                //SoapObject resSoap =(SoapObject) envelope.getResponse(); //either .bodyIn or use .getResponse();
+
+                SQL_ProductoLoteD myProLM = new SQL_ProductoLoteD(_Cont);
+                Data_ProductoLoteD Data = new Data_ProductoLoteD();
+
+                SoapObject resSoap =(SoapObject) envelope.bodyIn;
+                // Getting root element of the soap response (responseMsg)
+                //SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
+
+                // Getting all sub-elements of responseMsg
+                SoapObject ic_temp = (SoapObject)resSoap.getProperty(0);
+                try {
+
+
+                    for (int i = 0; i < ic_temp.getPropertyCount(); i++)
+                    {
+
+                        SoapObject  ic = (SoapObject)ic_temp.getProperty(i);
+
+                        //anyType{EmployeeID=-10; EmployeeCode=anyType{}; MasterID=anyType{}; SuperID=anyType{}; EmpNombre=anyType{}; EmpApellido=anyType{}; EmployeeTipo=anyType{}; ZonaID=anyType{}; }
+                        Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
+
+
+                        if(Data.RegID==-10)
+                        {
+                            // Password is incorrect
+                            Success = ERROR_FAILEDLOGIN;
+                        } else
+                        {
+                            // Password is Correct so let's continue
+                            Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
+                            Data.LoteID = Integer.valueOf(ic.getProperty(2).toString().trim());
+                            Data.ProductID = Integer.valueOf(ic.getProperty(3).toString().trim());
+                            Data.Cantidad = Integer.valueOf(ic.getProperty(4).toString().trim());
+
+                            myProLM.saveRecord(Data);
+                            Success = SUCCESSFUL_LOGIN;
+                        }
+
+                    } // The For Ends here
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(XmlPullParserException e)
+        {
+        }
+
+        return Success;
+    }
+
+    ///////////////////////////////////////////////////
+
     public int getUserMobile (String user, String pass, int ciclo, Context _Cont){
 
         int Success = 0;
@@ -1676,7 +1852,7 @@ public class Sync {
                         Data.ProductID = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
                         Data.EspecID = Integer.valueOf(ic.getProperty(2).toString().trim());
-                        Data.Nombre = ic.getProperty(5).toString().trim();
+                        Data.Nombre = ic.getProperty(3).toString().trim();
 
 
 
