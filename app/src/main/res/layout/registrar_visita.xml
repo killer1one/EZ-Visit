@@ -40,9 +40,8 @@
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:id="@+id/calendarView"
-        android:layout_weight="0.45" />
+        android:layout_height="240dp"
+        android:id="@+id/calendarView" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/linearLayout3"
         android:gravity="bottom">
 
