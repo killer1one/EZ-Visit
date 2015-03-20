@@ -10,13 +10,26 @@
         android:text="@string/txt_buscarCliente"
         android:id="@+id/textView34" />
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editBuscar" />
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editBuscar"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Buscar"
+            android:text="Buscar"
+            android:id="@+id/btnBuscar" />
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"

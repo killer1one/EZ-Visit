@@ -4,6 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import Util.Row_TempAdapter;
+import visit.ez.wyse.ezvisit.R;
 
 /**
  * Created by Ec_Colon on 15/2/15.
@@ -59,6 +66,51 @@ public class SQL_ClienteMaestro {
             myResult = "0";
         }
         return myResult;
+    }
+
+
+    public SimpleAdapter getCliente(Context contexto, String NombreCliente)
+    {
+
+
+        ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String,String>>();
+        HashMap<String,String> map = new HashMap<String, String>();
+
+        String sql = "select Clasificacion,ClientNombre, ClientApellido from "+TABLE_NAME+"  " +
+                " where ClientNombre LIKE '%"+NombreCliente+"%' order by ClientNombre";
+
+
+        c = db.rawQuery(sql, null);
+
+        if (c.moveToFirst())
+        {
+            //Recorremos el cursor hasta que no haya mas registros
+                do {
+
+                    map = new HashMap<String, String>();
+                    map.put("DirTipo","Clasificacion: "+c.getString(0));
+                    map.put("Telefono","Nombre: "+ c.getString(1));
+                    map.put("Correo","Apellido: " +c.getString(2));
+
+                mylist.add(map);
+            } while(c.moveToNext());
+        } // if ends here
+
+
+        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_contacto,
+                new String[] {"DirTipo", "Telefono", "Correo"},
+                new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
+
+
+
+        return idsAdapter;
+    } // Method ends here
+
+
+    public Cursor getCliente(){
+     Cursor retun = null;
+        retun = c;
+        return retun;
     }
 
 }
