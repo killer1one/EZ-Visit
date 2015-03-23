@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import Util.SelectableListAdapter;
 
 /**
- * Created by Carlos Nina Vargas on 3/19/2015.
+ * Created by Carlos Nina Vargas on 3/23/2015.
  */
-public class SQL_ProductoLoteD
+public class SQL_Inventario
 {
     private Sqlite myConn;
     private SQLiteDatabase db;
     private Cursor c;
-    private static final String TABLE_NAME = Sqlite.TABLE_ProductoLoteD;
+    private static final String TABLE_NAME = Sqlite.TABLE_Inventario;
 
-    public SQL_ProductoLoteD(Context context)
+    public SQL_Inventario(Context context)
     {
         myConn = new Sqlite(context, null, 1);
         db = myConn.getWritableDatabase();
@@ -30,11 +30,10 @@ public class SQL_ProductoLoteD
         db.close();
     }
 
-    public long saveRecord(Data_ProductoLoteD myData)
+    public long saveRecord(Data_Inventario myData)
     {
         ContentValues values = new ContentValues();
         values.put("RegID", myData.RegID);
-        values.put("MasterID", myData.MasterID);
         values.put("LoteID", myData.LoteID);
         values.put("ProductID", myData.ProductID);
         values.put("Cantidad", myData.Cantidad);
@@ -42,10 +41,27 @@ public class SQL_ProductoLoteD
         return db.insert(TABLE_NAME,null,values);
     }
 
-    public SelectableListAdapter<String> GetListaLote(Context contexto) {
+    public void TransferProducts(Cursor c)
+    {
+        // Copiando los productos aceptados al inventario
+        Data_Inventario myD = new Data_Inventario();
+
+        c.moveToFirst();
+        do {
+            myD.RegID = c.getInt(0);
+            myD.LoteID = c.getInt(2);
+            myD.ProductID = c.getInt(3);
+            myD.Cantidad = c.getInt(4);
+
+            saveRecord(myD);
+        } while(c.moveToNext());
+
+    }
+
+    public SelectableListAdapter<String> GetListaInventario(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
 
-        c = db.rawQuery("select b.Nombre, a.Cantidad, c.Aprobado from " + Sqlite.TABLE_ProductoLoteM + " c, " +TABLE_NAME+" a inner join " + Sqlite.TABLE_Productos + " b where a.ProductID = b.ProductID and c.Aprobado = 0 Order by a.ProductID", null);
+        c = db.rawQuery("select b.Nombre, a.Cantidad from " +TABLE_NAME+" a inner join " + Sqlite.TABLE_Productos + " b where a.ProductID = b.ProductID Order by a.ProductID", null);
         // Getting the data from the select
         //Nos aseguramos de que existe al menos un registro
         if (c.moveToFirst())
@@ -69,12 +85,5 @@ public class SQL_ProductoLoteD
         SelectableListAdapter<String> idsAdapter = new SelectableListAdapter<String>(contexto, android.R.layout.simple_list_item_1, idc);
 
         return idsAdapter;
-    }
-
-    public Cursor getCursor()
-    {
-        c = db.rawQuery("select * from " + TABLE_NAME,null);
-
-        return c;
     }
 }

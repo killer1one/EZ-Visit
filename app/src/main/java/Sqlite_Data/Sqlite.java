@@ -40,6 +40,7 @@ public class Sqlite extends SQLiteOpenHelper{
     public static final String TABLE_Productos = "Productos";
     public static final String TABLE_ProductoLoteM = "ProductoLoteM";
     public static final String TABLE_ProductoLoteD = "ProductoLoteD";
+    public static final String TABLE_Inventario = "Inventario";
 
 
 
@@ -66,6 +67,8 @@ public class Sqlite extends SQLiteOpenHelper{
     private static final String DATABASE_CREATE_Productos = Variable_Static.Productos;
     private static final String DATABASE_CREATE_ProductoLoteM = Variable_Static.ProductoLoteM;
     private static final String DATABASE_CREATE_ProductoLoteD = Variable_Static.ProductoLoteD;
+
+    private static final String DATABASE_CREATE_Inventario = Variable_Static.Inventario;
 
 
 
@@ -129,6 +132,7 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL( DATABASE_CREATE_Productos );
             db.execSQL( DATABASE_CREATE_ProductoLoteM);
             db.execSQL( DATABASE_CREATE_ProductoLoteD);
+            db.execSQL( DATABASE_CREATE_Inventario);
 
             //Temp
             db.execSQL( DATABASE_CREATE_DirrecionTemp );
@@ -172,7 +176,7 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_Productos );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ProductoLoteM );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ProductoLoteD );
-
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_Inventario);
 
             //Temp
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_DirrecionTemp );

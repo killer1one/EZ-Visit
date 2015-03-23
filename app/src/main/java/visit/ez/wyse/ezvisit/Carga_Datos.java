@@ -74,8 +74,8 @@ public class Carga_Datos extends ActionBarActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
             dialogProcess = new ProgressDialog(this);
-            dialogProcess.setMessage("Procesando solicitud Carga de Datos  favor espere.");
-            dialogProcess.setTitle("Progreso EZ-Visit");
+            dialogProcess.setMessage("Procesando solicitud Carga de Datos");
+            dialogProcess.setTitle("Descargando...");
             dialogProcess.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             dialogProcess.setCancelable(false);
             dialogProcess.setProgress(0);
@@ -142,6 +142,11 @@ public class Carga_Datos extends ActionBarActivity {
                         if(flagResult>=0) {
                             //Obteniendo ClienteMaestro
                             sync.getProductos(User, Clave, 0, _cont);
+                        }
+
+                        if(flagResult>=0) {
+                           // Obtenidendo tipos de direccion
+                            sync.getTipoAddresses(User, Clave, 0, _cont);
                         }
 
                         if(flagResult>=0) {
@@ -269,7 +274,7 @@ public class Carga_Datos extends ActionBarActivity {
                                     AlertDialog.Builder a = new AlertDialog.Builder(Carga_Datos.this);
                                     a.setIcon(android.R.drawable.ic_dialog_alert);
                                     a.setTitle("Error");
-                                    a.setMessage("Error Haciendo la carga de datos por favor intente de Nuevo..");
+                                    a.setMessage("Ha ocurrido un error en la descarga de datos");
                                     a.setPositiveButton(android.R.string.yes, null);
                                     a.setNegativeButton(android.R.string.no, null);
                                     a.show();
@@ -300,7 +305,7 @@ public class Carga_Datos extends ActionBarActivity {
         AlertDialog.Builder a = new AlertDialog.Builder(this);
         a.setIcon(android.R.drawable.ic_dialog_alert);
         a.setTitle("Error");
-        a.setMessage("Error Haciendo la carga de datos por favor intente de Nuevo..");
+        a.setMessage("Ha ocurrido un error en la descarga de datos");
         a.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             }
@@ -356,9 +361,9 @@ public class Carga_Datos extends ActionBarActivity {
         public void handleMessage(Message msg) {
 			/*String Pro = "Procesando tabla ";
 			dialogProcess.setMessage(Pro + ReferenciaPorcienMetod + ".");*/
-            dialogProcess.setMessage("Cargando Datos");
+            dialogProcess.setMessage("Descargando datos");
             if (endSync) {
-                dialogProcess .setMessage("La Carga de Dato ha Terminado.");
+                dialogProcess .setMessage("El proceso de descargar a terminado");
             }
         }
     };

@@ -46,7 +46,7 @@ public class SQL_ProductoLoteM
     public int getLoteID()
     {
         int result = 0;
-        c = db.rawQuery("select LoteID from " + TABLE_NAME,null);
+        c = db.rawQuery("select LoteID from " + TABLE_NAME + " where Aprobado = 0",null);
         if (c.moveToFirst())
         {
             result = c.getInt(0);

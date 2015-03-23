@@ -164,6 +164,12 @@ public class Variable_Static {
             "[ProductID] INTEGER NOT NULL, \n" +
             "[Cantidad] INTEGER NOT NULL )";
 
+    public static String Inventario = "CREATE TABLE [Inventario] (\n" +
+            "[RegID] INTEGER NOT NULL ," +
+            "[LoteID] INTEGER NOT NULL, " +
+            "[ProductID] INTEGER NOT NULL, \n" +
+            "[Cantidad] INTEGER NOT NULL )";
+
     /*Tablas Temporales*/
 
     public static String DirrecionesTemp = "CREATE TABLE [DirrecionTemp] (\n" +

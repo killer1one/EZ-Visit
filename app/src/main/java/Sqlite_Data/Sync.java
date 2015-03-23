@@ -940,7 +940,6 @@ public class Sync {
 
                         SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
-
                         Data.RegID = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.MasterID = Integer.valueOf(ic.getProperty(1).toString().trim());
                         Data.ClientID = Integer.valueOf(ic.getProperty(2).toString().trim());
@@ -1005,8 +1004,8 @@ public class Sync {
                         String flagAnswer = resSoap.getProperty(i).toString();
                         SoapObject  ic = (SoapObject)resSoap.getProperty(i);
 
-                        Data.Descripcion = "";
-                        Data.TipoAddress = 0;
+                        Data.TipoAddress = Integer.valueOf(ic.getProperty(0).toString().trim());
+                        Data.Descripcion = ic.getProperty(1).toString().trim();
 
                         myTipAdre.saveRecord(Data);
 

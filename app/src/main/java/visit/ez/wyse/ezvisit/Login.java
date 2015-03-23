@@ -197,10 +197,10 @@ public class Login extends ActionBarActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
 
         alert.setTitle("Error");
-        alert.setMessage("La Contraseña de Ez-Visit que dígito esta incorrecta Intenta de Nuevo");
+        alert.setMessage("La Contraseña que ha introducido es incorrecta");
         alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
+                finish();
             }
         });
 
@@ -218,10 +218,10 @@ public class Login extends ActionBarActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(Login.this);
 
         alert.setTitle("Error");
-        alert.setMessage("La Contraseña de Ez-Visit que dígito esta incorrecta Intenta de Nuevo");
+        alert.setMessage("La Contraseña que ha introducido es incorrecta");
         alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
+                finish();
             }
         });
 

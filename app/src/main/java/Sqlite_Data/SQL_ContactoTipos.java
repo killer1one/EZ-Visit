@@ -39,4 +39,6 @@ public class SQL_ContactoTipos {
         return 0;
     }
 
+
+
 }

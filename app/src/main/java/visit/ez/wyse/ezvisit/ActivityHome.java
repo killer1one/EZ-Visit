@@ -82,4 +82,11 @@ public class ActivityHome extends ActionBarActivity {
         Intent launchThing = new Intent(this, recibir_muestras.class);
         startActivity(launchThing);
     }
+
+    public void GoInventario(View v)
+    {
+        // Go to Inventario
+        Intent launchThing = new Intent(this, Inventario.class);
+        startActivity(launchThing);
+    }
 }

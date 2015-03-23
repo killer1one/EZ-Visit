@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import Sqlite_Data.SQL_Inventario;
 import Sqlite_Data.SQL_ProductoLoteD;
 import Sqlite_Data.SQL_ProductoLoteM;
 
@@ -73,9 +74,16 @@ public class recibir_muestras extends ActionBarActivity {
 
         myLoteM.AprobarLote();
 
+        SQL_ProductoLoteD myPL = new SQL_ProductoLoteD(this);
+
         // Hay que añadir la creación de inventario aqui.
+        SQL_Inventario myI = new SQL_Inventario(this);
+
+        myI.TransferProducts(myPL.getCursor());
 
         myLoteM.close();
+
+        myI.close();
 
         finish();
     }

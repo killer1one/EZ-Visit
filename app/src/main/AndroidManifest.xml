@@ -93,6 +93,10 @@
             android:name=".Pantalla_Entrega_Muestra"
             android:label="@string/title_activity_pantalla__entrega__muestra" >
         </activity>
+        <activity
+            android:name=".Inventario"
+            android:label="@string/title_activity_inventario" >
+        </activity>
     </application>
 
 </manifest>
