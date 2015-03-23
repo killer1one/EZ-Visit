@@ -37,7 +37,7 @@ public class SQL_ClienteMaestro {
     {
         try{
             ContentValues values = new ContentValues();
-            values.put("ClientID", myData.ClientID);
+            //values.put("ClientID", myData.ClientID);
             values.put("MasterID", myData.MasterID);
             values.put("ClientCode", myData.ClientCode);
             values.put("Clasificacion", myData.Clasificacion);
@@ -54,16 +54,16 @@ public class SQL_ClienteMaestro {
         return 0;
     }
 
-    public String GetLastID()
+    public int GetLastID()
     {
-        String myResult;
+        int myResult;
         c = db.rawQuery("select ClientID as numeroC,max(cast(ClientID as integer)) from "+TABLE_NAME,null);
         if (c.moveToFirst())
         {
-            myResult = c.getString(0);
+            myResult = c.getInt(0);
         } else
         {
-            myResult = "0";
+            myResult = 0;
         }
         return myResult;
     }
@@ -76,7 +76,7 @@ public class SQL_ClienteMaestro {
         ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String,String>>();
         HashMap<String,String> map = new HashMap<String, String>();
 
-        String sql = "select Clasificacion,ClientNombre, ClientApellido from "+TABLE_NAME+"  " +
+        String sql = "select Clasificacion,ClientNombre, ClientApellido, ClientID from "+TABLE_NAME+"  " +
                 " where ClientNombre LIKE '%"+NombreCliente+"%' order by ClientNombre";
 
 
@@ -108,9 +108,7 @@ public class SQL_ClienteMaestro {
 
 
     public Cursor getCliente(){
-     Cursor retun = null;
-        retun = c;
-        return retun;
+        return c;
     }
 
 }

@@ -29,7 +29,7 @@ public class SQL_ClientAddress {
     {
         try{
             ContentValues values = new ContentValues();
-            values.put("ClientAddressID", myData.ClientAddressID);
+            //values.put("ClientAddressID", myData.ClientAddressID);
             values.put("MasterID", myData.MasterID);
             values.put("ClientID", myData.ClientID);
             values.put("ClientDireccion", myData.ClientDireccion);
@@ -44,17 +44,26 @@ public class SQL_ClientAddress {
         return 0;
     }
 
-    public String GetLastID()
+    public int GetLastID()
     {
-        String myResult;
+        int myResult;
         c = db.rawQuery("select ClientAddressID as numeroC,max(cast(ClientAddressID as integer)) from "+TABLE_NAME,null);
         if (c.moveToFirst())
         {
-            myResult = c.getString(0);
+            myResult = c.getInt(0);
         } else
         {
-            myResult = "0";
+            myResult = 0;
         }
         return myResult;
+    }
+
+    public void ActualizarCLienteID(int ClientID, int ClientAddressID){
+        try {
+            db.execSQL("update "+TABLE_NAME+" set ClientID = "+ClientID+" where ClientAddressID = "+ClientAddressID);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

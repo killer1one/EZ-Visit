@@ -175,5 +175,9 @@ public class Variable_Static {
             "[Telefono] VARCHAR( 100 ) NOT NULL, " +
             "[Correo] VARCHAR( 100 ) NOT NULL )";
 
+     public static String ProductosTemp = "CREATE TABLE [ProductosTemp] (\n" +
+                "[Cantidad] INTEGER NOT NULL ,\n" +
+                "[ProductID] INTEGER NOT NULL )";
+
 
 }

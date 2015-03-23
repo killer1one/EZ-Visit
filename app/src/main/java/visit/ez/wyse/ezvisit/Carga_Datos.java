@@ -1,6 +1,5 @@
 package visit.ez.wyse.ezvisit;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +25,7 @@ import Sqlite_Data.Sqlite;
 import Sqlite_Data.Sync;
 
 
-public class Carga_Datos extends Activity {
+public class Carga_Datos extends ActionBarActivity {
 
 
     public EditText Usuario,Password;

@@ -77,6 +77,9 @@ public class Sqlite extends SQLiteOpenHelper{
     public static final String TABLE_ContactoTemp = "ContactoTemp";
     private static final String DATABASE_CREATE_ContactoTemp = Variable_Static.ContactoTemp;
 
+    public static final String TABLE_ProductosTemp = "ProductosTemp";
+    private static final String DATABASE_CREATE_ProductosTemp = Variable_Static.ProductosTemp;
+
 
 
 
@@ -130,6 +133,7 @@ public class Sqlite extends SQLiteOpenHelper{
             //Temp
             db.execSQL( DATABASE_CREATE_DirrecionTemp );
             db.execSQL( DATABASE_CREATE_ContactoTemp );
+            db.execSQL( DATABASE_CREATE_ProductosTemp );
 
         } catch (Exception e) {
 			// TODO: handle exception
@@ -173,6 +177,7 @@ public class Sqlite extends SQLiteOpenHelper{
             //Temp
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_DirrecionTemp );
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ContactoTemp );
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_ProductosTemp );
 
             // Calling to re-create everything
 			onCreate(db);

@@ -70,4 +70,20 @@ public class SQL_Employee {
 
         return Result;
     }
+
+
+    public int getEmployeeID(){
+
+            int myResult;
+            c = db.rawQuery("select EmployeeID from "+TABLE_NAME,null);
+            if (c.moveToFirst())
+            {
+                myResult = c.getInt(0);
+            } else
+            {
+                myResult = 0;
+            }
+            return myResult;
+
+    }
 }

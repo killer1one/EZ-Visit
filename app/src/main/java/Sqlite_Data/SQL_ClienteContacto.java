@@ -29,7 +29,7 @@ public class SQL_ClienteContacto {
     {
         try{
             ContentValues values = new ContentValues();
-            values.put("ClientContactID", myData.ClientContactID);
+            //values.put("ClientContactID", myData.ClientContactID);
             values.put("MasterID", myData.MasterID);
             values.put("ClientID", myData.ClientID);
             values.put("TipoContacto", myData.TipoContacto);
@@ -43,18 +43,27 @@ public class SQL_ClienteContacto {
         return 0;
     }
 
-    public String GetLastID()
+    public int GetLastID()
     {
-        String myResult;
+        int myResult;
         c = db.rawQuery("select ClientContactID as numeroC,max(cast(ClientContactID as integer)) from "+TABLE_NAME,null);
         if (c.moveToFirst())
         {
-            myResult = c.getString(0);
+            myResult = c.getInt(0);
         } else
         {
-            myResult = "0";
+            myResult = 0;
         }
         return myResult;
+    }
+
+    public void ActualizarCLienteID(int ClientID, int ClientContactID){
+        try {
+            db.execSQL("update "+TABLE_NAME+" set ClientID = "+ClientID+" where ClientContactID = "+ClientContactID);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

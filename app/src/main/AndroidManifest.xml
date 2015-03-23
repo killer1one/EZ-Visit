@@ -85,6 +85,14 @@
             android:name=".recibir_muestras"
             android:label="@string/title_activity_recibir_muestras" >
         </activity>
+        <activity
+            android:name=".Cerrar_Visita"
+            android:label="@string/title_activity_cerrar_visita" >
+        </activity>
+        <activity
+            android:name=".Pantalla_Entrega_Muestra"
+            android:label="@string/title_activity_pantalla__entrega__muestra" >
+        </activity>
     </application>
 
 </manifest>

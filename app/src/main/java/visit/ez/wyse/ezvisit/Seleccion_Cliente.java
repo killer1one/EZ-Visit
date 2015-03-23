@@ -1,12 +1,14 @@
 package visit.ez.wyse.ezvisit;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -30,6 +32,23 @@ public class Seleccion_Cliente extends ActionBarActivity {
         myLista = (ListView)findViewById(R.id.listClientes);
 
         myCLiMaes = new SQL_ClienteMaestro(_Con);
+
+        myLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Cursor Mycli = myCLiMaes.getCliente();
+                Mycli.moveToPosition(position);
+
+                Registrar_Visita.labelCliente.setText("[" + Mycli.getString(1) + " " + Mycli.getString(2) + "]");
+                Registrar_Visita.ClientID = Mycli.getInt(3);
+
+                finish();
+
+
+            }
+        });
+
+
 
 
 

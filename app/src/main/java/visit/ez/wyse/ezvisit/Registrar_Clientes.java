@@ -209,6 +209,13 @@ public class Registrar_Clientes extends ActionBarActivity {
 
             CliDatoZ.saveRecord(mycliDatoZ);
 
+
+            //Actualizando el Cliente ID EN los Detalle
+            CLiDir.ActualizarCLienteID(CliMaes.GetLastID(), CLiDir.GetLastID());
+            CLiCon.ActualizarCLienteID(CliMaes.GetLastID(),CLiCon.GetLastID() );
+
+
+
         }catch (Exception e){
             e.printStackTrace();
         }

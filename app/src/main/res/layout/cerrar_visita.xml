@@ -73,7 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_entregamuestras"
-            android:id="@+id/button8" />
+            android:id="@+id/EntregaMuestra"
+            android:onClick="GoEntrega" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,14 +128,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_cancelar"
                 android:id="@+id/bCancelar"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="Cancelar" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_guardar"
                 android:id="@+id/bGuardar"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="Guardar" />
         </LinearLayout>
 
 
