@@ -10,8 +10,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import Sqlite_Data.Data_ClientAddress;
 import Sqlite_Data.Data_ClienteContacto;
@@ -64,6 +66,59 @@ public class Registrar_Clientes extends ActionBarActivity {
         // Stuff
         spTipoCliente = (Spinner)findViewById(R.id.spinTipoCliente);
         spTipoCliente.setAdapter(CliTipo.ListaClienteTipo(_Con));
+
+        spTipoCliente.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String TipoDeCliente = ((TextView)view).getText().toString();
+                if(TipoDeCliente.equals("Centro Medico") || TipoDeCliente.equals("Centro Médico") )
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewNombreCliente);
+                    myT.setText("Nombre del Centro");
+                    myT = (TextView)findViewById(R.id.textViewApellidoCliente);
+                    myT.setVisibility(View.INVISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editApellido);
+                    myE.setVisibility(View.INVISIBLE);
+
+                    Spinner myS = (Spinner)findViewById(R.id.spinEspec);
+                    myS.setVisibility(View.INVISIBLE);
+                } else if(TipoDeCliente.equals("Medico") || TipoDeCliente.equals("Médico"))
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewNombreCliente);
+                    myT.setText("Nombre del Médico");
+                    myT = (TextView)findViewById(R.id.textViewApellidoCliente);
+                    myT.setText("Apellido del Médico");
+                    myT.setVisibility(View.VISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editApellido);
+                    myE.setVisibility(View.VISIBLE);
+
+                    Spinner myS = (Spinner)findViewById(R.id.spinEspec);
+                    myS.setVisibility(View.VISIBLE);
+
+                } else if(TipoDeCliente.equals("(Seleccione)"))
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewNombreCliente);
+                    myT.setText("Nombre del Cliente");
+                    myT = (TextView)findViewById(R.id.textViewApellidoCliente);
+                    myT.setText("Apellido del Cliente");
+                    myT.setVisibility(View.VISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editApellido);
+                    myE.setVisibility(View.VISIBLE);
+
+                    Spinner myS = (Spinner)findViewById(R.id.spinEspec);
+                    myS.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         spEspec = (Spinner)findViewById(R.id.spinEspec);
         spEspec.setAdapter(Espec.ListaEspecialidades(_Con));

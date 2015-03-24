@@ -13,13 +13,14 @@ import android.widget.Spinner;
 import Sqlite_Data.Data_ContactoTemp;
 import Sqlite_Data.SQL_ClientTipos;
 import Sqlite_Data.SQL_ContactoTemp;
+import Sqlite_Data.SQL_ContactoTipos;
 
 
 public class AnadirContacto extends ActionBarActivity {
 
-    public SQL_ClientTipos CliTipo;
     public SQL_ContactoTemp SqlConTemp;
     public Context _Con;
+    public SQL_ContactoTipos myCT;
     EditText editTelefono;
     EditText editCorreo;
     ListView myList;
@@ -31,11 +32,12 @@ public class AnadirContacto extends ActionBarActivity {
         setContentView(R.layout.anadir_contacto);
         _Con = this;
 
-        CliTipo = new SQL_ClientTipos(_Con);
         SqlConTemp = new SQL_ContactoTemp(_Con);
 
-         spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
-        spTipoContacto.setAdapter(CliTipo.ListaClienteTipo(_Con));
+        myCT = new SQL_ContactoTipos(this);
+
+        spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
+        spTipoContacto.setAdapter(myCT.ListaTipos(_Con));
 
         myList = (ListView)findViewById(R.id.listViewContactos);
         myList.setAdapter(SqlConTemp.ShowConTemp(_Con));
@@ -72,7 +74,7 @@ public class AnadirContacto extends ActionBarActivity {
         // Getting the objects
         Data_ContactoTemp myConTemp = new Data_ContactoTemp();
         myConTemp.Correo = editCorreo.getText().toString();
-        myConTemp.DirTipo = CliTipo.getCLienteTipo(spTipoContacto.getSelectedItem().toString());;
+        myConTemp.DirTipo = myCT.getTipoID(spTipoContacto.getSelectedItem().toString());;
         myConTemp.Telefono = editTelefono.getText().toString();
 
         SqlConTemp.saveRecord(myConTemp);

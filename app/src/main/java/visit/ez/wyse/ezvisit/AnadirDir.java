@@ -13,11 +13,12 @@ import android.widget.Spinner;
 import Sqlite_Data.Data_DirrecionTemp;
 import Sqlite_Data.SQL_ClientTipos;
 import Sqlite_Data.SQL_DirrecionTemp;
+import Sqlite_Data.SQL_TipoAddresses;
 
 
 public class AnadirDir extends ActionBarActivity {
 
-    public SQL_ClientTipos CliTipo;
+    public SQL_TipoAddresses myAddr;
     public SQL_DirrecionTemp SqlDirTemp;
     public Context _Con;
     Spinner spTipoDir;
@@ -30,15 +31,16 @@ public class AnadirDir extends ActionBarActivity {
         setContentView(R.layout.anadir_direccion);
 
         _Con = this;
-        CliTipo = new SQL_ClientTipos(_Con);
         SqlDirTemp = new SQL_DirrecionTemp(_Con);
 
         myList = (ListView)findViewById(R.id.listViiewDir);
         myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
+        myAddr = new SQL_TipoAddresses(this);
+
         // Getting the objects
         spTipoDir = (Spinner)findViewById(R.id.spinTipoDir);
-        spTipoDir.setAdapter(CliTipo.ListaClienteTipo(_Con));
+        spTipoDir.setAdapter(myAddr.ListaTipos(_Con));
 
         editDir= (EditText)findViewById(R.id.editDir);
     }
@@ -71,7 +73,7 @@ public class AnadirDir extends ActionBarActivity {
 
         Data_DirrecionTemp myDirTemp = new Data_DirrecionTemp();
         myDirTemp.Direccion = editDir.getText().toString();
-        myDirTemp.DirTipo = CliTipo.getCLienteTipo(spTipoDir.getSelectedItem().toString());
+        myDirTemp.DirTipo = myAddr.getTipoID(spTipoDir.getSelectedItem().toString());
 
         SqlDirTemp.saveRecord(myDirTemp);
 

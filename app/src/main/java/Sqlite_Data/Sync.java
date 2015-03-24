@@ -997,12 +997,14 @@ public class Sync {
                 SoapObject resSoap =(SoapObject) envelope.bodyIn;
                 try {
 
+                    SoapObject root_ic = (SoapObject)resSoap.getProperty(0);
 
-                    for (int i = 0; i < resSoap.getPropertyCount(); i++)
+
+                    for (int i = 0; i < root_ic.getPropertyCount(); i++)
                     {
 
-                        String flagAnswer = resSoap.getProperty(i).toString();
-                        SoapObject  ic = (SoapObject)resSoap.getProperty(i);
+                        //String flagAnswer = resSoap.getProperty(i).toString();
+                        SoapObject  ic = (SoapObject)root_ic.getProperty(i);
 
                         Data.TipoAddress = Integer.valueOf(ic.getProperty(0).toString().trim());
                         Data.Descripcion = ic.getProperty(1).toString().trim();
