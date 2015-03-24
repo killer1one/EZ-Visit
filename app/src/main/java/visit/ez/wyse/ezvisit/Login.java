@@ -168,7 +168,7 @@ public class Login extends ActionBarActivity {
 
         // Set an EditText view to get user input
         final EditText input = new EditText(Login.this);
-        input.setHint("Contrasenña");
+        input.setHint("Contraseña");
         alert.setView(input);
 
         alert.setNegativeButton("Salir", new DialogInterface.OnClickListener() {

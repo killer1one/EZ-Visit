@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txt_tel"
-        android:id="@+id/textView25" />
+        android:id="@+id/textViewTelefono" />
 
     <EditText
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txt_mail"
-        android:id="@+id/textView26" />
+        android:id="@+id/textViewCorreo" />
 
     <EditText
         android:layout_width="match_parent"

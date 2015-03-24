@@ -6,9 +6,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import Sqlite_Data.Data_ContactoTemp;
 import Sqlite_Data.SQL_ClientTipos;
@@ -38,6 +40,47 @@ public class AnadirContacto extends ActionBarActivity {
 
         spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
         spTipoContacto.setAdapter(myCT.ListaTipos(_Con));
+
+        spTipoContacto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String TipoDeContacto = ((TextView)view).getText().toString();
+
+                if(TipoDeContacto.equals("Correo Electronico") || TipoDeContacto.equals("Correo Electrónico") || TipoDeContacto.equals("Email")  )
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewTelefono);
+                    myT.setVisibility(View.INVISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editTel);
+                    myE.setVisibility(View.INVISIBLE);
+
+                    myT = (TextView)findViewById(R.id.textViewCorreo);
+                    myT.setVisibility(View.VISIBLE);
+
+                    myE = (EditText)findViewById(R.id.editMail);
+                    myE.setVisibility(View.VISIBLE);
+                } else if (TipoDeContacto.equals("Telefono Fijo") || TipoDeContacto.equals("Teléfono Fijo")  )
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewTelefono);
+                    myT.setVisibility(View.VISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editTel);
+                    myE.setVisibility(View.VISIBLE);
+
+                    myT = (TextView)findViewById(R.id.textViewCorreo);
+                    myT.setVisibility(View.INVISIBLE);
+
+                    myE = (EditText)findViewById(R.id.editMail);
+                    myE.setVisibility(View.INVISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         myList = (ListView)findViewById(R.id.listViewContactos);
         myList.setAdapter(SqlConTemp.ShowConTemp(_Con));

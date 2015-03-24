@@ -46,7 +46,7 @@ public class SQL_ClientTipos {
 
     public SelectableListAdapter<String> ListaClienteTipo(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
-        idc.add("(Seleccione)");
+        idc.add("(Seleccione Tipo de Cliente)");
 
         c = db.rawQuery("select Descripcion from "+TABLE_NAME+" Order by Descripcion", null);
         // Getting the data from the select
@@ -67,7 +67,7 @@ public class SQL_ClientTipos {
 
     public SelectableListAdapter<String> ListaClasificacion(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
-        idc.add("(Seleccione)");
+        idc.add("(Seleccione Clasificación)");
         idc.add("A");
         idc.add("B");
         idc.add("C");

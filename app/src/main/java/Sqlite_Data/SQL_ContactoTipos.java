@@ -45,7 +45,7 @@ public class SQL_ContactoTipos {
 
     public SelectableListAdapter<String> ListaTipos(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
-        idc.add("(Seleccione)");
+        idc.add("(Seleccione tipo de Contacto)");
 
         c = db.rawQuery("select Descripcion from "+TABLE_NAME+" Order by Descripcion", null);
         // Getting the data from the select

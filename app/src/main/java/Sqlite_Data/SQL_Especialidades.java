@@ -46,7 +46,7 @@ public class SQL_Especialidades {
 
     public SelectableListAdapter<String> ListaEspecialidades(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
-        idc.add("(Seleccione)");
+        idc.add("(Seleccione Especialidad)");
 
         c = db.rawQuery("select Descripcion from "+TABLE_NAME+" Order by Descripcion", null);
         // Getting the data from the select
