@@ -93,6 +93,7 @@ public class Variable_Static {
             "[PTEstado] INT NOT NULL ,\n" +
             "[PTTipo] INTEGER NOT NULL ,\n" +
             "[PTPRog] INTEGER NOT NULL ,\n" +
+            "[VisitID] INTEGER NOT NULL ,\n" +
             "[SuperID] INTEGER UNSIGNED NOT NULL)";
 
     public static String TiposCita = "CREATE TABLE [TiposCita] (\n" +
@@ -106,7 +107,9 @@ public class Variable_Static {
             "[HDEstado] INT NOT NULL ,\n" +
             "[HDNotas] TEXT NOT NULL ,\n" +
             "[HDFecha] DATE NOT NULL ,\n" +
-            "[HDHora] TIME NOT NULL )";
+            "[HDHora] TIME NOT NULL, "+
+            "[VisitID] INTEGER NOT NULL, "+
+            "[HDObjetivo] TEXT NOT NULL )";
 
     public static String ConfiguracionKPI = "CREATE TABLE [ConfiguracionKPI] (\n" +
             "[RegID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +

@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import Sqlite_Data.Data_DirrecionTemp;
-import Sqlite_Data.SQL_ClientTipos;
 import Sqlite_Data.SQL_DirrecionTemp;
 import Sqlite_Data.SQL_TipoAddresses;
 
@@ -32,6 +31,7 @@ public class AnadirDir extends ActionBarActivity {
 
         _Con = this;
         SqlDirTemp = new SQL_DirrecionTemp(_Con);
+        //SqlDirTemp.getDeleteAll();
 
         myList = (ListView)findViewById(R.id.listViiewDir);
         myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));

@@ -2,6 +2,7 @@ package visit.ez.wyse.ezvisit;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -32,6 +33,15 @@ public class Plan_Trabajo extends ActionBarActivity {
 
         myLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Cursor MyPlant = MyPlan.getPlanT();
+                MyPlant.moveToPosition(position);
+
+                Cerrar_Visita.Apellido = MyPlant.getString(4);
+                Cerrar_Visita.Nombre = MyPlant.getString(1);
+                Cerrar_Visita.Dirrecion = MyPlant.getString(2);
+                Cerrar_Visita.RepID = MyPlant.getInt(5);
+                Cerrar_Visita.VisitID = MyPlant.getInt(6);
 
                 GoCerrarVisita();
             }

@@ -112,6 +112,7 @@ public class Registrar_Visita extends ActionBarActivity {
             DMyPlan.PTTipo = CliTipo.getCLienteTipo(spTipoCliente.getSelectedItem().toString());
             DMyPlan.PTPRog = 0;
             DMyPlan.SuperID = 0;
+            DMyPlan.VisitID = MyPlan.GetVisitID() +1;
 
             MyPlan.saveRecord(DMyPlan);
 

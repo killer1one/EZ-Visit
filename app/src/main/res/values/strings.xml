@@ -61,7 +61,7 @@
     <string name="txt_razonlote">Razón de aceptación/rechazo </string>
     <string name="txt_rechazarlote">Rechazar Lote</string>
     <string name="txt_aceptarlote">Aceptar Lote</string>
-    <string name="title_activity_pantalla__entrega__muestra">Pantalla_Entrega_Muestra</string>
+    <string name="title_activity_pantalla__entrega__muestra">Entrega Muestra</string>
     <string name="title_activity_inventario">Inventario</string>
 
 

@@ -29,7 +29,7 @@ public class SQL_ClientAddress {
     {
         try{
             ContentValues values = new ContentValues();
-            //values.put("ClientAddressID", myData.ClientAddressID);
+            values.put("ClientAddressID", myData.ClientAddressID);
             values.put("MasterID", myData.MasterID);
             values.put("ClientID", myData.ClientID);
             values.put("ClientDireccion", myData.ClientDireccion);

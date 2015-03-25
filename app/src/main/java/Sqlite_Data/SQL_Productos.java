@@ -51,27 +51,36 @@ public class SQL_Productos {
         ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String,String>>();
         HashMap<String,String> map = new HashMap<String, String>();
 
-        String sql = "select Nombre, ProductID from "+TABLE_NAME+" " ;
+        try{
+
+            String sql = "select DISTINCT P.Nombre, P.ProductID, ifnull(PT.Cantidad ,0) as Cantidad from "+TABLE_NAME+" P " +
+                    "LEFT OUTER JOIN ProductosTemp PT on P.ProductID = PT.ProductID" ;
+
+            c = db.rawQuery(sql, null);
+
+            if (c.moveToFirst())
+            {
+                //Recorremos el cursor hasta que no haya mas registros
+                do {
+
+                    map = new HashMap<String, String>();
+                    map.put("Nombre",c.getString(0));
+                    map.put("Cantidad",c.getString(2));
+
+                    mylist.add(map);
+                } while(c.moveToNext());
+            } // if ends here
 
 
-        c = db.rawQuery(sql, null);
 
-        if (c.moveToFirst())
-        {
-            //Recorremos el cursor hasta que no haya mas registros
-            do {
 
-                map = new HashMap<String, String>();
-                map.put("Nombre",c.getString(0));
-
-                mylist.add(map);
-            } while(c.moveToNext());
-        } // if ends here
-
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_producto,
-                new String[] {"Nombre"},
-                new int[] {R.id.txtNombreProducto});
+                new String[] {"Nombre", "Cantidad"},
+                new int[] {R.id.txtNombreProducto, R.id.txtCantidad});
 
 
 

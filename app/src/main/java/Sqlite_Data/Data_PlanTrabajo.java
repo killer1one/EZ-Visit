@@ -15,4 +15,5 @@ public class Data_PlanTrabajo {
     public int PTTipo = 0;
     public int PTPRog = 0;
     public int SuperID = 0;
+    public int VisitID = 0;
 }

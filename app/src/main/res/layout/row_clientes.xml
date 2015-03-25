@@ -14,18 +14,18 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Codigo:   "
+                android:text="Clasificacion:   "
                 android:id="@+id/textView37" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Codigo cliente"
-                android:id="@+id/txtCodigo"
+                android:text="Tipo DIr"
+                android:id="@+id/txtTipoDir"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -35,7 +35,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Nombre:  "
@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Nombre Cliente"
+                android:text="Telefono"
                 android:textStyle="bold"
-                android:id="@+id/txtNombreCliente" />
+                android:id="@+id/txtTelefono" />
 
         </LinearLayout>
 
@@ -57,42 +57,20 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Dirección:   "
+                android:text="Apellido:   "
                 android:id="@+id/textView39" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Direccion"
+                android:text="Correo"
                 android:textStyle="bold"
-                android:id="@+id/txtDireccion" />
+                android:id="@+id/txtCorreo" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Aprovacion:   "
-                android:id="@+id/textview" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Aprovacion"
-                android:textStyle="bold"
-                android:textColor="@color/accent_material_light"
-                android:id="@+id/txtAprovacion" />
         </LinearLayout>
 
     </LinearLayout>

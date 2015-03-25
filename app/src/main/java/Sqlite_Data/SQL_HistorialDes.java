@@ -37,6 +37,9 @@ public class SQL_HistorialDes {
             values.put("HDFecha", myData.HDFecha);
             values.put("HDHora", myData.HDHora);
 
+            values.put("HDObjetivo", myData.HDObjetivo);
+            values.put("VisitID", myData.VisitID);
+
             return db.insert(TABLE_NAME,null,values);
         } catch (Exception e) {
             e.printStackTrace();

@@ -65,6 +65,19 @@ public class SQL_ClientTipos {
         return idsAdapter;
     }
 
+    public SelectableListAdapter<String> getEstadoVisita(Context contexto) {
+        ArrayList<String> idc = new ArrayList<String>();
+        idc.add("(Seleccione Estado Visita)");
+        idc.add("Completa");
+        idc.add("Pospuesta");
+        idc.add("Fallida");
+
+
+        SelectableListAdapter<String> idsAdapter = new SelectableListAdapter<String>(contexto, android.R.layout.simple_list_item_1, idc);
+
+        return idsAdapter;
+    }
+
     public SelectableListAdapter<String> ListaClasificacion(Context contexto) {
         ArrayList<String> idc = new ArrayList<String>();
         idc.add("(Seleccione Clasificación)");

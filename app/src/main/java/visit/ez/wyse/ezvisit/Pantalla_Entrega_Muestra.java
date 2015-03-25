@@ -36,9 +36,9 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
 
         MyPro = new SQL_Productos(_Cont);
         MyProTemp = new SQL_ProductoTemp(_Cont);
-        MyProTemp.DeleteAll();
+        //MyProTemp.DeleteAll();
 
-        myLista = (ListView)findViewById(R.id.listVisitas);
+        myLista = (ListView)findViewById(R.id.LvProducto);
         myLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -46,6 +46,8 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
                 Mycur.moveToPosition(position);
 
                 SetDialogCantidad(Mycur.getInt(1));
+
+
             }
         });
 
@@ -95,7 +97,7 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 SaveProductosTemp(Integer.valueOf(input.getText().toString()),ProID);
-
+                new myBuscar().execute("", "");
             }
         });
 
@@ -134,6 +136,8 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
     public void SaveProductosTemp(int Cantidad, int ProID){
 
         try{
+
+            MyProTemp.DeleteItem(ProID);
 
             Data_ProductosTemp Temp = new Data_ProductosTemp();
             Temp.Cantidad = Cantidad;

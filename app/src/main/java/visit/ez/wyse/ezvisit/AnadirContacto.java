@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import Sqlite_Data.Data_ContactoTemp;
-import Sqlite_Data.SQL_ClientTipos;
 import Sqlite_Data.SQL_ContactoTemp;
 import Sqlite_Data.SQL_ContactoTipos;
 
@@ -35,6 +34,7 @@ public class AnadirContacto extends ActionBarActivity {
         _Con = this;
 
         SqlConTemp = new SQL_ContactoTemp(_Con);
+        //SqlConTemp.getDeleteAll();
 
         myCT = new SQL_ContactoTipos(this);
 

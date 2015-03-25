@@ -52,5 +52,13 @@ public class SQL_ProductoTemp {
         }
     }
 
+    public void DeleteItem(int ProductoID){
+        try {
+            db.execSQL("Delete from "+TABLE_NAME+" where ProductID = "+ProductoID);
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
+    }
+
 
 }

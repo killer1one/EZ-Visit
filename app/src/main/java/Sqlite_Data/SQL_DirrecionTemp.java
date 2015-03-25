@@ -52,27 +52,31 @@ public class SQL_DirrecionTemp {
     {
 
 
+
         ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String,String>>();
         HashMap<String,String> map = new HashMap<String, String>();
-
-        String sql = "select Temp.Direccion, CT.Descripcion from "+TABLE_NAME+" Temp inner join ClientTipos CT on Temp.DirTipo = CT.ClientTipo order by Temp.Direccion";
-
-
-        c = db.rawQuery(sql, null);
-
-        if (c.moveToFirst())
-        {
-            //Recorremos el cursor hasta que no haya mas registros
-            do {
-
-                map = new HashMap<String, String>();
-                map.put("DirTipo",c.getString(1));
-                map.put("Direccion", c.getString(0));
+        try{
+            String sql = "select Temp.Direccion, CT.Descripcion from "+TABLE_NAME+" Temp inner join ClientTipos CT on Temp.DirTipo = CT.ClientTipo order by Temp.Direccion";
 
 
-                mylist.add(map);
-            } while(c.moveToNext());
-        } // if ends here
+            c = db.rawQuery(sql, null);
+
+            if (c.moveToFirst())
+            {
+                //Recorremos el cursor hasta que no haya mas registros
+                do {
+
+                    map = new HashMap<String, String>();
+                    map.put("DirTipo",c.getString(1));
+                    map.put("Direccion", c.getString(0));
+
+
+                    mylist.add(map);
+                } while(c.moveToNext());
+            } // if ends here
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_direciones,

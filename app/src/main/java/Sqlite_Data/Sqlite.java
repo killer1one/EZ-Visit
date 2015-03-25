@@ -140,6 +140,7 @@ public class Sqlite extends SQLiteOpenHelper{
             db.execSQL( DATABASE_CREATE_ProductosTemp );
 
         } catch (Exception e) {
+            e.printStackTrace();
 			// TODO: handle exception
 		}
 	}

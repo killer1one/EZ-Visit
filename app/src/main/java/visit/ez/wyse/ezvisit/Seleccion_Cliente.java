@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import Sqlite_Data.SQL_ClienteMaestro;
 
@@ -39,8 +40,11 @@ public class Seleccion_Cliente extends ActionBarActivity {
                 Cursor Mycli = myCLiMaes.getCliente();
                 Mycli.moveToPosition(position);
 
-                Registrar_Visita.labelCliente.setText("[" + Mycli.getString(1) + " " + Mycli.getString(2) + "]");
+                Registrar_Visita.labelCliente.setText("[" + Mycli.getString(1) + " - " + Mycli.getString(2) + "]");
                 Registrar_Visita.ClientID = Mycli.getInt(3);
+
+
+                Toast.makeText(_Con,"As Seleccionado el Cliente "+Mycli.getString(1), Toast.LENGTH_LONG);
 
                 finish();
 

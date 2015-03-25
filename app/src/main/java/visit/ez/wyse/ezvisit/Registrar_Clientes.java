@@ -224,6 +224,10 @@ public class Registrar_Clientes extends ActionBarActivity {
 
                     DetalleAdres.ClientDireccion = TempListDir.getString(1);
                     DetalleAdres.TipoAddress = TempListDir.getInt(0);
+                    DetalleAdres.ClientLatitud = "";
+                    DetalleAdres.ClientLongitud = "";
+                    DetalleAdres.MasterID = 0;
+                    DetalleAdres.ClientAddressID = CLiDir.GetLastID() + 1;
 
                     CLiDir.saveRecord(DetalleAdres);
 
@@ -242,7 +246,7 @@ public class Registrar_Clientes extends ActionBarActivity {
             mycli.Clasificacion = spClasificacion.getSelectedItem().toString();
             mycli.ClientAddressID = Integer.valueOf(CLiDir.GetLastID());
             mycli.ClientApellido = editApellido.getText().toString();
-            //mycli.ClientCode = "";
+            mycli.ClientCode = "C"+Integer.valueOf(CLiDir.GetLastID());
             mycli.ClientContactID = Integer.valueOf(CLiCon.GetLastID());
             //mycli.ClientID = 0;
             mycli.ClientNombre = editNombre.getText().toString();

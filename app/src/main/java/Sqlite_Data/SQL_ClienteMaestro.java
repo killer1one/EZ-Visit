@@ -88,16 +88,16 @@ public class SQL_ClienteMaestro {
                 do {
 
                     map = new HashMap<String, String>();
-                    map.put("DirTipo","Clasificacion: "+c.getString(0));
-                    map.put("Telefono","Nombre: "+ c.getString(1));
-                    map.put("Correo","Apellido: " +c.getString(2));
+                    map.put("DirTipo",c.getString(0));
+                    map.put("Telefono", c.getString(1));
+                    map.put("Correo",c.getString(2));
 
                 mylist.add(map);
             } while(c.moveToNext());
         } // if ends here
 
 
-        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_contacto,
+        SimpleAdapter   idsAdapter  = new Row_TempAdapter(contexto, mylist, R.layout.row_clientes,
                 new String[] {"DirTipo", "Telefono", "Correo"},
                 new int[] {R.id.txtTipoDir,R.id.txtTelefono,R.id.txtCorreo});
 

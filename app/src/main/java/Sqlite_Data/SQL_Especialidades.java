@@ -45,20 +45,26 @@ public class SQL_Especialidades {
     }
 
     public SelectableListAdapter<String> ListaEspecialidades(Context contexto) {
+
+
         ArrayList<String> idc = new ArrayList<String>();
         idc.add("(Seleccione Especialidad)");
 
-        c = db.rawQuery("select Descripcion from "+TABLE_NAME+" Order by Descripcion", null);
-        // Getting the data from the select
-        //Nos aseguramos de que existe al menos un registro
-        if (c.moveToFirst())
-        {
-            //Recorremos el cursor hasta que no haya m�s registros
-            do {
-                String nombre = c.getString(0);
-                idc.add(nombre);
-            } while(c.moveToNext());
-        } // if ends here
+        try{
+            c = db.rawQuery("select Descripcion from "+TABLE_NAME+" Order by Descripcion", null);
+            // Getting the data from the select
+            //Nos aseguramos de que existe al menos un registro
+            if (c.moveToFirst())
+            {
+                //Recorremos el cursor hasta que no haya m�s registros
+                do {
+                    String nombre = c.getString(0);
+                    idc.add(nombre);
+                } while(c.moveToNext());
+            } // if ends here
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         SelectableListAdapter<String> idsAdapter = new SelectableListAdapter<String>(contexto, android.R.layout.simple_list_item_1, idc);
 
