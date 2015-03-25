@@ -81,12 +81,7 @@
             android:label="@string/title_activity_registrar__visita"
             android:screenOrientation="landscape">
         </activity>
-        <activity
-            android:name=".Seleccion_Cliente"
-            android:label="@string/title_activity_seleccion__cliente"
-            android:screenOrientation="landscape">
-        </activity>
-        <activity
+         <activity
             android:name=".AnadirDir"
             android:label="@string/title_activity_anadir_dir"
             android:screenOrientation="landscape">
