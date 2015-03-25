@@ -11,7 +11,7 @@
     <string name="title_activity_asignacion__ruta">Asignacion_Ruta</string>
     <string name="title_activity_presupuesto">Presupuesto</string>
     <string name="title_activity_productos">productos</string>
-    <string name="title_activity_registro__gastos">Registro_Gastos</string>
+    <string name="title_activity_registro__gastos">Reporte_Gastos</string>
     <string name="title_activity_carga__datos">Carga_Datos</string>
 
     <string name="txt_nombrecliente">Nombre del Cliente</string>
@@ -63,6 +63,8 @@
     <string name="txt_aceptarlote">Aceptar Lote</string>
     <string name="title_activity_pantalla__entrega__muestra">Entrega Muestra</string>
     <string name="title_activity_inventario">Inventario</string>
+
+    <string name="txt_Metricas">Métricas</string>
 
 
 

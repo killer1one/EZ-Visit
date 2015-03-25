@@ -24,12 +24,40 @@
         android:text="@string/txt_cliente"
         android:id="@+id/textView28" />
 
-    <Button
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txt_buscarCliente"
-        android:onClick="BuscarCliente"
-        android:id="@+id/bBuscar" />
+        android:id="@+id/textView34" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editBuscar"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Buscar"
+            android:text="Buscar"
+            android:id="@+id/btnBuscar" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="143dp"
+        android:id="@+id/listClientes"
+        android:layout_gravity="center_horizontal"
+        android:choiceMode="singleChoice" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +69,8 @@
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="1dp"
+        android:visibility="invisible"
         android:id="@+id/calendarView" />
 
     <CheckBox

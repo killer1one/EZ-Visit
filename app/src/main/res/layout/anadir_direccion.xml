@@ -3,53 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Direcciones"
-        android:id="@+id/textView20" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:id="@+id/listViiewDir"
-        android:layout_weight="1" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="AddDir"
-        android:text="/\\"
-        android:id="@+id/bAdd" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txt_tipoDir"
-        android:id="@+id/textView21" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinTipoDir"
-        android:spinnerMode="dropdown" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txt_direccion"
-        android:id="@+id/textView22" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:hint="Dirección"
-        android:ems="10"
-        android:id="@+id/editDir" />
 
     <LinearLayout
         android:orientation="horizontal"

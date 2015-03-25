@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,14 +20,18 @@ import Sqlite_Data.Data_ClientAddress;
 import Sqlite_Data.Data_ClienteContacto;
 import Sqlite_Data.Data_ClienteDatosZ;
 import Sqlite_Data.Data_ClienteMaestro;
+import Sqlite_Data.Data_ContactoTemp;
+import Sqlite_Data.Data_DirrecionTemp;
 import Sqlite_Data.SQL_ClientAddress;
 import Sqlite_Data.SQL_ClientTipos;
 import Sqlite_Data.SQL_ClienteContacto;
 import Sqlite_Data.SQL_ClienteDatosZ;
 import Sqlite_Data.SQL_ClienteMaestro;
 import Sqlite_Data.SQL_ContactoTemp;
+import Sqlite_Data.SQL_ContactoTipos;
 import Sqlite_Data.SQL_DirrecionTemp;
 import Sqlite_Data.SQL_Especialidades;
+import Sqlite_Data.SQL_TipoAddresses;
 
 
 public class Registrar_Clientes extends ActionBarActivity {
@@ -40,6 +45,19 @@ public class Registrar_Clientes extends ActionBarActivity {
 
     public SQL_ClientAddress CLiDir;
     public SQL_ClienteContacto CLiCon;
+
+    public SQL_ContactoTemp SqlConTemp;
+    EditText editTelefono;
+    EditText editCorreo;
+    ListView myList;
+    Spinner spTipoContacto;
+    public SQL_ContactoTipos myCT;
+
+    public SQL_TipoAddresses myAddr;
+    public SQL_DirrecionTemp SqlDirTemp;
+    Spinner spTipoDir;
+    EditText editDir;
+    ListView myList2;
 
 
     public Context _Con;
@@ -130,6 +148,77 @@ public class Registrar_Clientes extends ActionBarActivity {
 
         editNombre = (EditText)findViewById(R.id.editNombre);
         editApellido = (EditText)findViewById(R.id.editApellido);
+
+        SqlConTemp = new SQL_ContactoTemp(_Con);
+        //SqlConTemp.getDeleteAll();
+
+        myCT = new SQL_ContactoTipos(this);
+
+        spTipoContacto = (Spinner)findViewById(R.id.spinTipoContacto);
+        spTipoContacto.setAdapter(myCT.ListaTipos(_Con));
+
+        spTipoContacto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String TipoDeContacto = ((TextView)view).getText().toString();
+
+                if(TipoDeContacto.equals("Correo Electronico") || TipoDeContacto.equals("Correo Electrónico") || TipoDeContacto.equals("Email")  )
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewTelefono);
+                    myT.setVisibility(View.INVISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editTel);
+                    myE.setVisibility(View.INVISIBLE);
+
+                    myT = (TextView)findViewById(R.id.textViewCorreo);
+                    myT.setVisibility(View.VISIBLE);
+
+                    myE = (EditText)findViewById(R.id.editMail);
+                    myE.setVisibility(View.VISIBLE);
+                } else if (TipoDeContacto.equals("Telefono Fijo") || TipoDeContacto.equals("Teléfono Fijo")  )
+                {
+                    TextView myT = (TextView)findViewById(R.id.textViewTelefono);
+                    myT.setVisibility(View.VISIBLE);
+
+                    EditText myE = (EditText)findViewById(R.id.editTel);
+                    myE.setVisibility(View.VISIBLE);
+
+                    myT = (TextView)findViewById(R.id.textViewCorreo);
+                    myT.setVisibility(View.INVISIBLE);
+
+                    myE = (EditText)findViewById(R.id.editMail);
+                    myE.setVisibility(View.INVISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        myList = (ListView)findViewById(R.id.listViewContactos);
+        myList.setAdapter(SqlConTemp.ShowConTemp(_Con));
+
+        editTelefono = (EditText)findViewById(R.id.editTel);
+        editCorreo = (EditText)findViewById(R.id.editMail);
+
+
+
+        SqlDirTemp = new SQL_DirrecionTemp(_Con);
+        //SqlDirTemp.getDeleteAll();
+
+        myList2 = (ListView)findViewById(R.id.listViiewDir);
+        myList2.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
+
+        myAddr = new SQL_TipoAddresses(this);
+
+        // Getting the objects
+        spTipoDir = (Spinner)findViewById(R.id.spinTipoDir);
+        spTipoDir.setAdapter(myAddr.ListaTipos(_Con));
+
+        editDir= (EditText)findViewById(R.id.editDir);
 
 
     }
@@ -280,6 +369,35 @@ public class Registrar_Clientes extends ActionBarActivity {
         }
 
         AlertSave();
+
+    }
+
+    public void AddContacto(View v)
+    {
+        // Getting the objects
+        Data_ContactoTemp myConTemp = new Data_ContactoTemp();
+        myConTemp.Correo = editCorreo.getText().toString();
+        myConTemp.DirTipo = myCT.getTipoID(spTipoContacto.getSelectedItem().toString());;
+        myConTemp.Telefono = editTelefono.getText().toString();
+
+        SqlConTemp.saveRecord(myConTemp);
+
+        myList.setAdapter(SqlConTemp.ShowConTemp(_Con));
+
+
+        // Transferir los valores a la lista
+    }
+
+    public void AddDir(View v)
+    {
+
+        Data_DirrecionTemp myDirTemp = new Data_DirrecionTemp();
+        myDirTemp.Direccion = editDir.getText().toString();
+        myDirTemp.DirTipo = myAddr.getTipoID(spTipoDir.getSelectedItem().toString());
+
+        SqlDirTemp.saveRecord(myDirTemp);
+
+        myList2.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
     }
 

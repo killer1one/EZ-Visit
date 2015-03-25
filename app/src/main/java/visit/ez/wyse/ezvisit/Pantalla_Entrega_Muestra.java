@@ -25,7 +25,7 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
     ListView myLista ;
     Context _Cont;
     public SQL_Productos MyPro;
-    public SQL_ProductoTemp MyProTemp;
+    public SQL_ProductoTemp MyProTemp2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
         _Cont = this;
 
         MyPro = new SQL_Productos(_Cont);
-        MyProTemp = new SQL_ProductoTemp(_Cont);
+        MyProTemp2 = new SQL_ProductoTemp(_Cont);
         //MyProTemp.DeleteAll();
 
         myLista = (ListView)findViewById(R.id.LvProducto);
@@ -137,13 +137,13 @@ public class Pantalla_Entrega_Muestra extends ActionBarActivity {
 
         try{
 
-            MyProTemp.DeleteItem(ProID);
+            MyProTemp2.DeleteItem(ProID);
 
             Data_ProductosTemp Temp = new Data_ProductosTemp();
             Temp.Cantidad = Cantidad;
             Temp.ProductID = ProID;
 
-            MyProTemp.saveRecord(Temp);
+            MyProTemp2.saveRecord(Temp);
 
             Toast.makeText(_Cont, "Se Guardo la cantidad " + Cantidad + " en la entrega", Toast.LENGTH_LONG);
 

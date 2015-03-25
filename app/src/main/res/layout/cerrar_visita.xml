@@ -69,12 +69,11 @@
             android:layout_height="180dp"
             android:id="@+id/calendarView2" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_entregamuestras"
-            android:id="@+id/EntregaMuestra"
-            android:onClick="GoEntrega" />
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/LvProducto"
+            android:choiceMode="singleChoice" />
 
         <TextView
             android:layout_width="wrap_content"

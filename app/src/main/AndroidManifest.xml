@@ -23,79 +23,98 @@
         </activity>
         <activity
             android:name=".ActivityHome"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Entrega_Muestra"
-            android:label="@string/title_activity_entrega__muestra" >
+            android:label="@string/title_activity_entrega__muestra"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Operativo_Medico"
-            android:label="@string/title_activity_operativo__medico" >
+            android:label="@string/title_activity_operativo__medico"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Consulta_Transaciones"
-            android:label="@string/title_activity_consulta__transaciones" >
+            android:label="@string/title_activity_consulta__transaciones"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Asignacion_Ruta"
-            android:label="@string/title_activity_asignacion__ruta" >
+            android:label="@string/title_activity_asignacion__ruta"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Presupuesto"
-            android:label="@string/title_activity_presupuesto" >
+            android:label="@string/title_activity_presupuesto"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".productos"
-            android:label="@string/title_activity_productos" >
+            android:label="@string/title_activity_productos"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Registro_Gastos"
-            android:label="@string/title_activity_registro__gastos" >
+            android:label="@string/title_activity_registro__gastos"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Carga_Datos"
-            android:label="@string/title_activity_carga__datos" >
+            android:label="@string/title_activity_carga__datos"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Plan_Trabajo"
-            android:label="@string/title_activity_plan__trabajo" >
+            android:label="@string/title_activity_plan__trabajo"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Registrar_Clientes"
-            android:label="@string/title_activity_registrar__clientes" >
+            android:label="@string/title_activity_registrar__clientes"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Registrar_Visita"
-            android:label="@string/title_activity_registrar__visita" >
+            android:label="@string/title_activity_registrar__visita"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Seleccion_Cliente"
-            android:label="@string/title_activity_seleccion__cliente" >
+            android:label="@string/title_activity_seleccion__cliente"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".AnadirDir"
-            android:label="@string/title_activity_anadir_dir" >
+            android:label="@string/title_activity_anadir_dir"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".AnadirContacto"
-            android:label="@string/title_activity_anadir_contacto" >
+            android:label="@string/title_activity_anadir_contacto"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".recibir_muestras"
-            android:label="@string/title_activity_recibir_muestras" >
+            android:label="@string/title_activity_recibir_muestras"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Cerrar_Visita"
-            android:label="@string/title_activity_cerrar_visita" >
+            android:label="@string/title_activity_cerrar_visita"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Pantalla_Entrega_Muestra"
-            android:label="@string/title_activity_pantalla__entrega__muestra" >
+            android:label="@string/title_activity_pantalla__entrega__muestra"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Inventario"
-            android:label="@string/title_activity_inventario" >
+            android:label="@string/title_activity_inventario"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

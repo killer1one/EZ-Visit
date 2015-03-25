@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
+import Util.SelectableListAdapter;
+
 /**
  * Created by Ec_Colon on 15/2/15.
  */
@@ -37,6 +41,19 @@ public class SQL_TiposCita {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public SelectableListAdapter<String> getTiposVisita(Context contexto) {
+        ArrayList<String> idc = new ArrayList<String>();
+        idc.add("(Seleccione tipo Visita)");
+        idc.add("Solo Promoción");
+        idc.add("Solo Muestras");
+        idc.add("Promoción y Muestras");
+
+
+        SelectableListAdapter<String> idsAdapter = new SelectableListAdapter<String>(contexto, android.R.layout.simple_list_item_1, idc);
+
+        return idsAdapter;
     }
 }
 

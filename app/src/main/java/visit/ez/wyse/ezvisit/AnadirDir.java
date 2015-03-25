@@ -22,7 +22,7 @@ public class AnadirDir extends ActionBarActivity {
     public Context _Con;
     Spinner spTipoDir;
     EditText editDir;
-    ListView myList;
+    ListView myList2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class AnadirDir extends ActionBarActivity {
         SqlDirTemp = new SQL_DirrecionTemp(_Con);
         //SqlDirTemp.getDeleteAll();
 
-        myList = (ListView)findViewById(R.id.listViiewDir);
-        myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
+        myList2 = (ListView)findViewById(R.id.listViiewDir);
+        myList2.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
         myAddr = new SQL_TipoAddresses(this);
 
@@ -77,7 +77,7 @@ public class AnadirDir extends ActionBarActivity {
 
         SqlDirTemp.saveRecord(myDirTemp);
 
-        myList.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
+        myList2.setAdapter(SqlDirTemp.ShowDirTemp(_Con));
 
     }
 

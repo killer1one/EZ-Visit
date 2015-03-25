@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/innerTableClientes">
 
     <Spinner
         android:layout_width="match_parent"
@@ -40,28 +46,114 @@
         android:ems="10"
         android:id="@+id/editApellido" />
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Direcciones"
+        android:id="@+id/textView20" />
+
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="147dp"
+        android:id="@+id/listViiewDir" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_anadirdir"
-            android:onClick="GoAnadirDir"
-            android:id="@+id/bDirecciones"
-            android:layout_weight="1" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="AddDir"
+        android:text="/\\"
+        android:id="@+id/bAddDir" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_anadircontacto"
-            android:onClick="GoAnadirContacto"
-            android:id="@+id/bContacto"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_tipoDir"
+        android:id="@+id/textView21" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinTipoDir"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_direccion"
+        android:id="@+id/textView22" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Dirección"
+        android:ems="10"
+        android:id="@+id/editDir" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_contactos"
+        android:id="@+id/textView23" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/listViewContactos"
+        android:layout_weight="0.00" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="AddContacto"
+        android:text="/\\"
+        android:id="@+id/bAddContacto" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_tipoContacto"
+        android:id="@+id/textView24" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinTipoContacto"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_tel"
+        android:id="@+id/textViewTelefono" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editTel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_mail"
+        android:id="@+id/textViewCorreo" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editMail" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -74,6 +166,8 @@
         android:layout_height="51dp"
         android:id="@+id/spinClasificacion"
         android:spinnerMode="dropdown" />
+
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -100,3 +194,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
+</ScrollView>

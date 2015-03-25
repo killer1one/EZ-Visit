@@ -10,17 +10,19 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="40dp">
 
             <ImageButton
-                android:layout_width="65dp"
-                android:layout_height="59dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
                 android:id="@+id/bVisitas"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
@@ -37,7 +39,8 @@
                 android:text="@string/txt_planTrabajo"
                 android:id="@+id/textView16"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
         </LinearLayout>
 
 
@@ -45,11 +48,12 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="40dp">
 
             <ImageButton
-                android:layout_width="65dp"
-                android:layout_height="59dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
                 android:text="New Button"
                 android:id="@+id/bClientes"
                 android:layout_alignParentTop="true"
@@ -67,20 +71,22 @@
                 android:text="@string/txt_registroCliente"
                 android:id="@+id/textView142"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="40dp">
 
             <ImageButton
-                android:layout_width="65dp"
-                android:layout_height="59dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:text="New Button"
                 android:id="@+id/bMuestras"
+                android:scaleType="fitCenter"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -96,18 +102,92 @@
                 android:text="@string/title_activity_recibir_muestras"
                 android:id="@+id/textView143"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout6"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp">
+
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
+                android:text="New Button"
+                android:id="@+id/bMetricas"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@null"
+                android:src="@drawable/gastos"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/txt_Metricas"
+                android:id="@+id/textView146"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="40dp">
 
             <ImageButton
-                android:layout_width="65dp"
-                android:layout_height="59dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
+                android:text="New Button"
+                android:id="@+id/bGastos"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@null"
+                android:src="@drawable/operativos"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/title_activity_registro__gastos"
+                android:id="@+id/textView147"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp">
+
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
                 android:text="New Button"
                 android:id="@+id/bInventario"
                 android:layout_alignParentTop="true"
@@ -125,7 +205,8 @@
                 android:text="@string/title_activity_inventario"
                 android:id="@+id/textView144"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp" />
+                android:layout_marginLeft="30dp"
+                android:textSize="40dp" />
         </LinearLayout>
 
     </LinearLayout>

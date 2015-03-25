@@ -33,7 +33,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="143dp"
         android:id="@+id/listClientes"
         android:layout_gravity="center_horizontal"
         android:choiceMode="singleChoice" />
